@@ -1,0 +1,22 @@
+.item-project  .item-content .project-icon i {
+    opacity: 0;
+    color: black;
+    font-size: 20px;
+    padding: 7px;
+}
+
+.item-project:hover  .item-content  .project-icon  .icon-detail  i{
+    opacity: 1;
+    animation: showup;
+    animation-duration: 2s;
+    animation-delay: 0.05s;
+    animation-fill-mode: forwards;
+}
+
+.item-project:hover  .item-content  .project-icon  .icon-view  i {
+    opacity: 1;
+    animation: showup;
+    animation-duration: 2s;
+    animation-delay: 0.08s;
+    animation-fill-mode: forwards;
+}
