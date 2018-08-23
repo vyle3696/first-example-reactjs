@@ -83,6 +83,11 @@
 }
 
 
+@keyframes showup1 {
+    from{opacity: 0; transform: translateY(50%);}
+    to  { opacity: 1;transform: translateY(0%);}
+}
+
 .list-load-animation > p {
     animation: showup1;
     animation-duration: 1s;
