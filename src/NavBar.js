@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDome from 'react-dom';
 import $ from 'jquery';
 
 import './index.css';

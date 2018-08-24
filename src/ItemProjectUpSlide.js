@@ -13,6 +13,10 @@ class ItemProjectUpSlide extends React.Component{
 
         }
 
+        this.content = {
+            
+        }
+
         this.initNewPreview = this.initNewPreview.bind(this);
 
         this.onClosePreview = this.onClosePreview.bind(this);
@@ -182,12 +186,12 @@ class ItemProjectUpSlide extends React.Component{
                 <div className="img-view">
                         <i id="btn-pre" className="material-icons" onClick={this.onPreSlide}>chevron_left</i>
                         <i id="btn-next" className="material-icons" onClick={this.onNextSlide}>chevron_right</i>
-                        <img id="img-temp"/>
+                        <img id="img-temp" alt=""/>
 
                     {
                         this.props.content.listBackgroundUrl.map((item,index)=>(
                             <div className="view-item" key={index}>
-                                <img  className="img-original" id={`img-item-${index}`} src={item}/>
+                                <img  className="img-original" id={`img-item-${index}`} src={item} alt=""/>
                             </div>
                         ))
                     }
