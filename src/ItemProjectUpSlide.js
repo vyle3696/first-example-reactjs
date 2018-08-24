@@ -1,9 +1,9 @@
 import React from 'react';
-
 import './Home.css';
 import './ItemProjectUpSlide.css';
 import $ from 'jquery';
 
+var isFirstSlide = true;
 class ItemProjectUpSlide extends React.Component{
     constructor(props){
         super(props);   
@@ -29,12 +29,13 @@ class ItemProjectUpSlide extends React.Component{
     componentDidUpdate(){
 
         this.onShowPreview();
+        isFirstSlide = true;
     
     }
 
     onShowPreview(){
         
-        $("#img-original").attr('src', this.props.content.listBackgroundUrl[0]);
+        $("#img-item-0").attr('src', this.props.content.listBackgroundUrl[0]);
         this.state.indexBackground = 0;
         $(".preview").css("display", "grid");
         $(".description").css("display", "flex");
@@ -59,22 +60,23 @@ class ItemProjectUpSlide extends React.Component{
         $(".btn-close").css("display", "inherit");
         this.checkSlide();
         this.unSwitchImg();
+        
     }
 
     switchImg(){
         $("#img-temp").css("opacity", 1);
-        $("#img-original").css("opacity", 0);
+        $("#img-item-0").css("opacity", 0);
     }
 
     unSwitchImg(){
-        $("#img-original").css("opacity", 1);
+        $("#img-item-0").css("opacity", 1);
         $("#img-temp").css("opacity", 0);
         
     }
 
     imgShowUp(){
 
-        var imgTarget = $("#img-original");
+        var imgTarget = $("#img-item-0");
         
         $("#img-temp").animate({
             height: imgTarget.outerHeight(),
@@ -118,10 +120,11 @@ class ItemProjectUpSlide extends React.Component{
         $(".preview").css("display", "none");
         $("#img-temp").css("opacity", 0);
         this.state.imgRoot.css("opacity", 1);
+        $(".img-original").removeClass("img-slide");
     }
 
     checkSlide(){
-        var src = $("#img-original").attr("src");
+        var src = $("#img-item-0").attr("src");
         console.log(this.props.content.listBackgroundUrl.indexOf(src));
 
         if(this.state.indexBackground == 0) {
@@ -143,14 +146,21 @@ class ItemProjectUpSlide extends React.Component{
     }
 
     onNextSlide(){
+        if(isFirstSlide){
+            $(".img-original").addClass("img-slide"); 
+            isFirstSlide = false;
+        }
+        
         this.state.indexBackground ++;
-        $("#img-original").attr('src', this.props.content.listBackgroundUrl[this.state.indexBackground]);
+        $(".img-original").css("opacity", 0);
+        $("#img-item-" + this.state.indexBackground).css("opacity", 1);
         this.checkSlide();
     }
 
     onPreSlide(){
         this.state.indexBackground --;
-        $("#img-original").attr('src', this.props.content.listBackgroundUrl[this.state.indexBackground]);
+        $(".img-original").css("opacity", 0);
+        $("#img-item-" + this.state.indexBackground).css("opacity", 1);
         this.checkSlide();
     }
 
@@ -165,12 +175,10 @@ class ItemProjectUpSlide extends React.Component{
                     {
                         this.props.content.listBackgroundUrl.map((item,index)=>(
                             <div className="view-item">
-                                <img key={index} id="img-original" src={item}/>
+                                <img key={index} className="img-original" id={`img-item-${index}`} src={item}/>
                             </div>
                         ))
                     }
-                    
-                    
                     
                 </div>
                 <i className="btn-close" onClick={this.onClosePreview}><span className="glyphicon glyphicon-remove-circle"></span></i>
