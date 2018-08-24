@@ -13,6 +13,8 @@ class ItemProjectUpSlide extends React.Component{
 
         }
 
+        this.initNewPreview = this.initNewPreview.bind(this);
+
         this.onClosePreview = this.onClosePreview.bind(this);
         this.onShowPreview = this.onShowPreview.bind(this);
         this.onShowDone = this.onShowDone.bind(this);
@@ -27,16 +29,23 @@ class ItemProjectUpSlide extends React.Component{
     }
 
     componentDidUpdate(){
-
+        this.initNewPreview()
         this.onShowPreview();
-        isFirstSlide = true;
+        
     
+    }
+
+    initNewPreview(){
+        isFirstSlide = true;
+        $("#img-item-0").attr('src', this.props.content.listBackgroundUrl[0]);
+        this.state.indexBackground = 0;
+        $(".img-original").css("opacity", 0);
     }
 
     onShowPreview(){
         
-        $("#img-item-0").attr('src', this.props.content.listBackgroundUrl[0]);
-        this.state.indexBackground = 0;
+        
+        
         $(".preview").css("display", "grid");
         $(".description").css("display", "flex");
         $(".overlay").css("opacity", 1);
@@ -109,6 +118,10 @@ class ItemProjectUpSlide extends React.Component{
         
         $(".bgd-img").removeClass("item-fade-out-center");
         this.switchImg();
+
+        $(".img-original").removeClass("img-slide");
+        $(".img-original").css("opacity", 0);
+        
         this.imgCloseDown();
         $(".bgd-img").addClass("item-fade-in-center");
         this.state.imgRoot.removeClass("item-fade-in-center");
@@ -120,7 +133,6 @@ class ItemProjectUpSlide extends React.Component{
         $(".preview").css("display", "none");
         $("#img-temp").css("opacity", 0);
         this.state.imgRoot.css("opacity", 1);
-        $(".img-original").removeClass("img-slide");
     }
 
     checkSlide(){
@@ -174,8 +186,8 @@ class ItemProjectUpSlide extends React.Component{
 
                     {
                         this.props.content.listBackgroundUrl.map((item,index)=>(
-                            <div className="view-item">
-                                <img key={index} className="img-original" id={`img-item-${index}`} src={item}/>
+                            <div className="view-item" key={index}>
+                                <img  className="img-original" id={`img-item-${index}`} src={item}/>
                             </div>
                         ))
                     }

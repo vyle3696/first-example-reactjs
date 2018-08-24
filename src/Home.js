@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDom from 'react-dom';
 
 import {ProjectList} from './ProjectList.js';
+
 import ItemProject from './ItemProject';
 //import ItemProjectUp from './ItemProjectUp';
 import ItemProjectUpSlide from './ItemProjectUpSlide';
@@ -14,7 +15,8 @@ class Home extends React.Component{
         super(props);
         this.state = {
             list: ProjectList,
-            preview: ProjectList[0]
+            preview: ProjectList[0],
+            
 
         }
         //console.log(this.state.list);

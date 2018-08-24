@@ -4,11 +4,20 @@ import NavBar from './NavBar';
 import Home from './Home';
 import Footer from './Footer';
 
+import {MenuList} from './MenuList';
+
 class Main extends React.Component{
+    constructor(props){
+        super(props);
+        this.state = {
+            menuList: MenuList
+
+        }
+    }
     render(){
         return(
             <div>
-                <NavBar/>
+                <NavBar menuList={this.state.menuList}/>
                 <Home/>
                 <Footer/>
                 <div id="btn-move-top">

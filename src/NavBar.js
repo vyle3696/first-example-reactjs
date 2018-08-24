@@ -12,6 +12,19 @@ class NavBar extends React.Component{
         this.onToggleMenuClick = this.onToggleMenuClick.bind(this);
     }
 
+
+    componentDidMount(){
+       
+    }
+
+    setDelayVerticalMenuItem(){
+        let deltaTime = 0.1;
+        $(".list-load-animation.top > p").each((index, element)=>{
+            $(element).css("animation-delay", deltaTime * (index + 1) + "s");
+            
+        });
+    }
+
     onToggleMenuClick(event){
         console.log("clicked");
         if(isNavVerExpand){
@@ -20,12 +33,14 @@ class NavBar extends React.Component{
             
             $(".menu-close").text("MENU")
             $(".nav-vertical .nav-left > .top").removeClass("list-load-animation");
+
         }
         else{
             $(".nav-vertical").css({left: '0'});
             $(".main-content").css({"left": '250px'});
             $(".menu-close").text("CLOSE")
             $(".nav-vertical .nav-left > .top").addClass("list-load-animation");
+            this.setDelayVerticalMenuItem();
         }
         isNavVerExpand = !isNavVerExpand;
     }
@@ -34,16 +49,12 @@ class NavBar extends React.Component{
             <div className="nav">
                 <div className="nav-vertical">
                     <div className="nav-left">
-                        <div className="top">
-                            <p>Home</p>
-                            <p>About Us</p>
-                            <p>Works &<br/>Our Project</p>
-                            <p>New & <br/> Exiting Trends</p>
-                            <p>Contact Us</p>
+                        <div className="top list-menu">
+                            {this.props.menuList.map((item,index)=>(
+                                <p key={index}>{item.text}</p>
+                            ))}
                         </div>
                         <div className="bottom">
-                            <p id="mail">yourmail@mail.com</p>
-                            <p id="phone">+00 000 000 000</p>
                             <p className="copyright">Copyright © 2017 All Rights Reserved.</p>
                         </div>
                     </div>
@@ -76,12 +87,10 @@ class NavBar extends React.Component{
                                 <i className="material-icons element-center" >remove</i>
                                 <i className="material-icons element-bottom">remove</i>
                             </div>
-                            <div className="list-text">
-                                <p>Home</p>
-                                <p>About Us</p>
-                                <p>Works &<br/>Our Project</p>
-                                <p>New & <br/> Exiting Trends</p>
-                                <p>Contact Us</p>
+                            <div className="list-text list-menu">
+                                {this.props.menuList.map((item,index)=>(
+                                    <p key={index}>{item.text}</p>
+                                ))}
                             </div>
                         </div>
                         <div className="social-icon">

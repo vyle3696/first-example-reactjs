@@ -30,7 +30,21 @@
     margin-right: 60px;
 }
 
-.nav-vertical .nav-left> .top > p{
+.list-menu {
+    overflow: scroll;
+    height: 95vh;
+    margin-bottom: 20px;
+}
+
+.list-menu p:hover{
+    color: #007aff;
+}
+
+.list-menu::-webkit-scrollbar {
+    width: 0px;
+}
+
+.nav-vertical .nav-left .top > p{
     font-size: 18px;
     margin: 20px;
     padding: 10px 0;
@@ -39,15 +53,11 @@
     transition: opacity 0.5s
 }
 
-.nav-vertical .nav-left> .top > p:hover{
-    color: #007aff;
-}
-
 .nav-vertical .nav-left> .bottom{
     position: absolute;
     bottom: 20px;
-    font-size: 15px;
-    margin: 10px;
+    font-size: 12px;
+    /* margin: 10px; */
     right: 60px;
     left: 10px;
 }
@@ -93,26 +103,6 @@
     animation-duration: 1s;
     animation-fill-mode: forwards;
     opacity: 0;
-}
-
-.list-load-animation > p:first-child{
-    animation-delay: 0.2s;
-}
-
-.list-load-animation > p:first-child + p{
-    animation-delay: 0.4s;
-}
-
-.list-load-animation > p:first-child + p + p{
-    animation-delay: 0.8s;
-}
-
-.list-load-animation > p:first-child + p + p + p{
-    animation-delay: 1s;
-}
-
-.list-load-animation > p:first-child + p + p + p + p{
-    animation-delay: 1.2s;
 }
 
 
@@ -266,9 +256,6 @@
    
 }
 
-.nav-horizontal  .list-text> p:hover{
-    color: blue;
-}
 
 .nav-horizontal ul{
     position: absolute;
