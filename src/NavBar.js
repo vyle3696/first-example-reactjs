@@ -48,7 +48,7 @@ class NavBar extends React.Component{
             <div className="nav">
                 <div className="nav-vertical">
                     <div className="nav-left">
-                        <div className="top list-menu">
+                        <div className="top list-menu scrollbar" id="style-7">
                             {this.props.menuList.map((item,index)=>(
                                 <p key={index}>{item.text}</p>
                             ))}

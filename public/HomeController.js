@@ -7,6 +7,10 @@ var $grid = $('.grid').masonry({
     //fitWidth: true
 });
 
+$grid.imagesLoaded().progress( function() {
+  $grid.masonry('layout');
+});
+
 $(".item-project  .item-project-inner").each(function(index) {
     //$(this).addClass("animated animatedFadeInUp fadeInUp");
     $(this).addClass("load-project-animation ");
