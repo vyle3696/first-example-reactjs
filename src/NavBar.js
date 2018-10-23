@@ -104,7 +104,7 @@ class NavBar extends React.Component{
                                 <i className="material-icons element-center" >remove</i>
                                 <i className="material-icons element-bottom">remove</i>
                             </div>
-                            <div className="list-text list-menu">
+                            <div className="list-text list-menu scrollbar">
                                 {this.props.menuList.map((item,index)=>(
                                     <p key={index}>{item.text}</p>
                                 ))}
