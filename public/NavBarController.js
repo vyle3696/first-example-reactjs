@@ -49,20 +49,20 @@ $(document).ready(function(){
         
     // });
 
-    var isNavHorExpand = false;
-    $(".icon-expand").click(function(){
-        if(isNavHorExpand){
-            $(".nav-horizontal  .list-text").css("right", "-100%");
-            $(this).removeClass('xstyle');
-            $(".nav-horizontal .list-text").removeClass("list-load-animation");
-        }
-        else{
-            $(".nav-horizontal  .list-text").css("right", "0");
-            $(this).addClass("xstyle");
-            $(".nav-horizontal .list-text").addClass("list-load-animation");
-        }
-        isNavHorExpand = !isNavHorExpand;
+    // var isNavHorExpand = false;
+    // $(".icon-expand").click(function(){
+    //     if(isNavHorExpand){
+    //         $(".nav-horizontal  .list-text").css("right", "-100%");
+    //         $(this).removeClass('xstyle');
+    //         $(".nav-horizontal .list-text").removeClass("list-load-animation");
+    //     }
+    //     else{
+    //         $(".nav-horizontal  .list-text").css("right", "0");
+    //         $(this).addClass("xstyle");
+    //         $(".nav-horizontal .list-text").addClass("list-load-animation");
+    //     }
+    //     isNavHorExpand = !isNavHorExpand;
 
-    });
+    // });
 
 });

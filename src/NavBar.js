@@ -5,10 +5,13 @@ import './index.css';
 import './NavBar.css';
 
 var isNavVerExpand = false;
+var isNavHorExpand = false;
+
 class NavBar extends React.Component{
     constructor(props){
         super(props);
         this.onToggleMenuClick = this.onToggleMenuClick.bind(this);
+        this.onHorizontalMenuClick = this.onHorizontalMenuClick.bind(this);
     }
 
 
@@ -16,16 +19,15 @@ class NavBar extends React.Component{
        
     }
 
-    setDelayVerticalMenuItem(){
+    setDelayMenuItem(){
         let deltaTime = 0.1;
-        $(".list-load-animation.top > p").each((index, element)=>{
+        $(".list-load-animation > p").each((index, element)=>{
             $(element).css("animation-delay", deltaTime * (index + 1) + "s");
-            
         });
     }
 
     onToggleMenuClick(event){
-        console.log("clicked");
+        
         if(isNavVerExpand){
             $(".nav-vertical").css({left: '-250px'});
             $(".main-content").css({"left": '0'});
@@ -39,10 +41,26 @@ class NavBar extends React.Component{
             $(".main-content").css({"left": '250px'});
             $(".menu-close").text("CLOSE")
             $(".nav-vertical .nav-left > .top").addClass("list-load-animation");
-            this.setDelayVerticalMenuItem();
+            this.setDelayMenuItem();
         }
         isNavVerExpand = !isNavVerExpand;
     }
+
+    onHorizontalMenuClick(){
+        if(isNavHorExpand){
+            $(".nav-horizontal  .list-text").css("right", "-100%");
+            $('.icon-expand').removeClass('xstyle');
+            $(".nav-horizontal .list-text").removeClass("list-load-animation");
+        }
+        else{
+            $(".nav-horizontal  .list-text").css("right", "0");
+            $('.icon-expand').addClass("xstyle");
+            $(".nav-horizontal .list-text").addClass("list-load-animation");
+            this.setDelayMenuItem();
+        }
+        isNavHorExpand = !isNavHorExpand;
+    }
+
     render(){
         return(
             <div className="nav">
@@ -81,7 +99,7 @@ class NavBar extends React.Component{
 
                     <div className="menu-header">
                         <div className="expand-menu">
-                            <div className = "icon-expand">
+                            <div className = "icon-expand"  onClick={this.onHorizontalMenuClick}>
                                 <i className="material-icons element-top " >remove</i>
                                 <i className="material-icons element-center" >remove</i>
                                 <i className="material-icons element-bottom">remove</i>
