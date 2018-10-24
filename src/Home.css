@@ -3,10 +3,6 @@
     box-sizing: border-box;
 }
 
-html{
-    overflow: auto;
-}
-
 a {
     cursor: pointer;
 }
@@ -14,7 +10,11 @@ a {
 body{
     margin: 0;
     font-family: Verdana;
+    /* transition: all 4s; */
+}
 
+.hide-scroll {
+    overflow: hidden;
 }
 .container {
     width: 100%;
@@ -26,8 +26,6 @@ body{
 
 .main-content {
     background-color: transparent;
-    /* overflow: auto;
-    height: 100vh; */
     margin-left: 60px;
     left: 0px;
     position: relative;
@@ -40,8 +38,6 @@ body{
     margin-left: 0;
     transition: margin-left 0.5s
 }
-
-
 
  /****************************************************************/
 

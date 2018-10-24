@@ -15,20 +15,28 @@ class Home extends React.Component{
         this.state = {
             list: ProjectList,
             preview: ProjectList[0],
-            
+            detail: ""
 
         }
         //console.log(this.state.list);
         this.onItemProjectClick = this.onItemProjectClick.bind(this);
+        this.closeDetail = this.closeDetail.bind(this);
     }
 
     onItemProjectClick(content){
         $(".bgd-img").removeClass("item-fade-in-center");
         console.log(content);
-        this.setState({preview: content}, function () {
-            console.log(this.state.preview);
+        this.setState({
+            detail: <ItemProjectUpSlide content={content} parent = {this} closeDetail = {this.closeDetail}/>
         });
-        
+        $('body').addClass('hide-scroll');
+    }
+
+    closeDetail(){
+        this.setState({
+            detail: ""
+        });
+        $('body').removeClass('hide-scroll');
     }
 
     render(){
@@ -42,9 +50,9 @@ class Home extends React.Component{
                         ))}
                     </div>
 
-                    
+                    {this.state.detail}
                 </div>
-                <ItemProjectUpSlide ref="preview" content={this.state.preview}/>
+                {}
             </div>
         );
     }

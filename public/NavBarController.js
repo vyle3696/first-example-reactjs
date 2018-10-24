@@ -27,6 +27,18 @@ $(document).ready(function(){
         return false; 
     }); 
 
+
+    var  demoDiv = document.getElementById('navv');
+    console.log(demoDiv);
+    const ps = new PerfectScrollbar(demoDiv, {
+        minScrollbarLength: 2,
+        wheelSpeed: 2,
+        wheelPropagation: true,
+        minScrollbarLength: 20
+      });
+    console.log(ps);
+    ps.update();
+
     // var isNavVerExpand = false;
     // $(".nav-right > .center").click(function(){
         

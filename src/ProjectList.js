@@ -11,7 +11,7 @@ export var ProjectList = [
         background: 'portfolio-thumbnail-1-960x480.jpg',
         projecName: 'Pop',
         projectType: 'Logo Design',
-        textColor: 'black',
+        textColor: 'white',
         colBootstrap: 'col-sm-12 col-md-6',
         projectDescription: "Mauris bibendum mollis eros, sit amet bibendum mi feugiat a. Aliquam nec odio auctor, sodales odio sagittis, consequat ex. Donec ut sapien semper, mattis nunc a, aliquam nulla. Curabitur libero arcu, mattis eget tristique sit amet, mattis non turpis. Phasellus aliquam elit non turpis vestibulum, tempus laoreet tellus faucibus. Vivamus elementum lectus in justo tempor, nec efficitur lorem elementum. Morbi sagittis, ipsum id convallis facilisis, libero augue luctus tellus, a malesuada magna sapien eget magna.",
         author: "Gary L. Francione",

@@ -1,6 +1,8 @@
 import React from 'react';
 import $ from 'jquery';
 
+import PerfectScrollbar from 'perfect-scrollbar';
+
 import './index.css';
 import './NavBar.css';
 
@@ -27,7 +29,6 @@ class NavBar extends React.Component{
     }
 
     onToggleMenuClick(event){
-        
         if(isNavVerExpand){
             $(".nav-vertical").css({left: '-250px'});
             $(".main-content").css({"left": '0'});
@@ -51,12 +52,14 @@ class NavBar extends React.Component{
             $(".nav-horizontal  .list-text").css("right", "-100%");
             $('.icon-expand').removeClass('xstyle');
             $(".nav-horizontal .list-text").removeClass("list-load-animation");
+            $('body').removeClass('hide-scroll');
         }
         else{
             $(".nav-horizontal  .list-text").css("right", "0");
             $('.icon-expand').addClass("xstyle");
             $(".nav-horizontal .list-text").addClass("list-load-animation");
             this.setDelayMenuItem();
+            $('body').addClass('hide-scroll ');
         }
         isNavHorExpand = !isNavHorExpand;
     }
@@ -66,7 +69,7 @@ class NavBar extends React.Component{
             <div className="nav">
                 <div className="nav-vertical">
                     <div className="nav-left">
-                        <div className="top list-menu scrollbar" id="style-7">
+                        <div id="navv" className="top list-menu scrollbar">
                             {this.props.menuList.map((item,index)=>(
                                 <p key={index}>{item.text}</p>
                             ))}

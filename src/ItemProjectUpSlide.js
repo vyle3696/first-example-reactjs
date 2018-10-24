@@ -13,31 +13,25 @@ class ItemProjectUpSlide extends React.Component{
 
         }
 
-        this.content = {
-            
-        }
-
         this.initNewPreview = this.initNewPreview.bind(this);
 
-        this.onClosePreview = this.onClosePreview.bind(this);
-        this.onShowPreview = this.onShowPreview.bind(this);
+        this.closeDetail = this.closeDetail.bind(this);
+        this.showDetail = this.showDetail.bind(this);
         this.onShowDone = this.onShowDone.bind(this);
         this.closeDone = this.closeDone.bind(this);
         this.imgCloseDown = this.imgCloseDown.bind(this);
         this.onNextSlide = this.onNextSlide.bind(this);
         this.onPreSlide = this.onPreSlide.bind(this);
         this.checkSlide = this.checkSlide.bind(this);
-
-
         
     }
 
-    componentDidUpdate(){
+    componentDidMount(){
         this.initNewPreview()
-        this.onShowPreview();
-        
-    
+        this.showDetail();
     }
+
+
 
     initNewPreview(){
         isFirstSlide = true;
@@ -46,35 +40,6 @@ class ItemProjectUpSlide extends React.Component{
         $(".img-original").css("opacity", 0);
     }
 
-    onShowPreview(){
-        
-        
-        
-        $(".preview").css("display", "grid");
-        $(".description").css("display", "flex");
-        $(".overlay").css("opacity", 1);
-        this.switchImg();
-        this.state.imgRoot = $("#img-project-"+this.props.content.id);
-        //var imgRoot = $("#img-project-"+this.props.content.id);
-
-        $("#img-temp").css({"top": this.state.imgRoot.offset().top - $(window).scrollTop(), "left": this.state.imgRoot.offset().left, height: this.state.imgRoot.outerHeight(), width: this.state.imgRoot.outerWidth()});
-        $("#img-temp").attr("src",this.props.content.backgroundUrl);
-        
-        this.state.imgRoot.css("opacity", 0);
-        this.imgShowUp();
-        $(".bgd-img").addClass("item-fade-out-center");
-        this.state.imgRoot.removeClass("item-fade-out-center");
-        
-        setTimeout(this.onShowDone, 500);
-    }
-
-    onShowDone(){
-        $(".img-view i").css("display", "inherit");
-        $(".btn-close").css("display", "inherit");
-        this.checkSlide();
-        this.unSwitchImg();
-        
-    }
 
     switchImg(){
         $("#img-temp").css("opacity", 1);
@@ -87,34 +52,47 @@ class ItemProjectUpSlide extends React.Component{
         
     }
 
-    imgShowUp(){
+    showDetail(){
+        $(".preview").css("display", "grid");
+        $(".description").css("display", "flex");
+        $(".overlay").css("opacity", 1);
+        this.switchImg();
+        this.state.imgRoot = $("#img-project-"+this.props.content.id);
+        //var imgRoot = $("#img-project-"+this.props.content.id);
 
-        var imgTarget = $("#img-item-0");
+        $("#img-temp").css({"top": this.state.imgRoot.offset().top - $(window).scrollTop(), "left": this.state.imgRoot.offset().left - $(window).scrollLeft(), height: this.state.imgRoot.outerHeight(), width: this.state.imgRoot.outerWidth()});
+        $("#img-temp").attr("src",this.props.content.backgroundUrl);
         
+        this.state.imgRoot.css("opacity", 0);
+        this.imgShowUp();
+        $(".bgd-img").addClass("item-fade-out-center");
+        this.state.imgRoot.removeClass("item-fade-out-center");
+        
+        setTimeout(this.onShowDone, 500);
+    }
+
+    imgShowUp(){
+        var imgTarget = $("#img-item-0");
         $("#img-temp").animate({
             height: imgTarget.outerHeight(),
             width: imgTarget.outerWidth(),
             top: imgTarget.offset().top - $(window).scrollTop(),
-            left: imgTarget.offset().left
+            left: imgTarget.offset().left - $(window).scrollLeft()
           }, {
             duration: 500,
             easing: "linear"});
     }
 
-    imgCloseDown(){
-
-        var imgTarget =  this.state.imgRoot;
-        $("#img-temp").animate({
-            height: imgTarget.outerHeight(),
-            width: imgTarget.outerWidth(),
-            top: imgTarget.offset().top - $(window).scrollTop(),
-            left: imgTarget.offset().left
-          }, {
-            duration: 500,
-            easing: "linear"});
+    onShowDone(){
+        $(".img-view i").css("display", "inherit");
+        $(".btn-close").css("display", "inherit");
+        this.checkSlide();
+        this.unSwitchImg();
+        
     }
+    
 
-    onClosePreview(){
+    closeDetail(){
         $(".overlay").css("opacity", 0);
         $(".description").css("display", "none");
         $(".img-view i").css("display", "none");
@@ -133,10 +111,23 @@ class ItemProjectUpSlide extends React.Component{
         setTimeout(this.closeDone, 500);
     }
 
+    imgCloseDown(){
+        var imgTarget =  this.state.imgRoot;
+        $("#img-temp").animate({
+            height: imgTarget.outerHeight(),
+            width: imgTarget.outerWidth(),
+            top: imgTarget.offset().top - $(window).scrollTop(),
+            left: imgTarget.offset().left - $(window).scrollLeft()
+          }, {
+            duration: 500,
+            easing: "linear"});
+    }
+
     closeDone(){
         $(".preview").css("display", "none");
         $("#img-temp").css("opacity", 0);
         this.state.imgRoot.css("opacity", 1);
+        this.props.closeDetail();
     }
 
     checkSlide(){
@@ -197,12 +188,12 @@ class ItemProjectUpSlide extends React.Component{
                     }
                     
                 </div>
-                <i className="btn-close" onClick={this.onClosePreview}><span className="glyphicon glyphicon-remove-circle"></span></i>
+                <i className="btn-close" onClick={this.closeDetail}><span className="glyphicon glyphicon-remove-circle"></span></i>
                 <div className="description">
                     <h3>{this.props.content.projecName}</h3>
                     <p>{this.props.content.projectDescription} <span>— {this.props.content.author}</span></p>
                     <div className="details">
-                        <a>{this.props.content.projectLink}</a>
+                        <a href={this.props.content.projectLink}>{this.props.content.projectLink}</a>
                     </div>
                     
                 </div>
