@@ -56,19 +56,26 @@ class ItemProjectUpSlide extends React.Component{
         $(".preview").css("display", "grid");
         $(".description").css("display", "flex");
         $(".overlay").css("opacity", 1);
+
         this.switchImg();
         this.state.imgRoot = $("#img-project-"+this.props.content.id);
-        //var imgRoot = $("#img-project-"+this.props.content.id);
+        this.state.imgDetail =  $("#img-item-0");
 
-        $("#img-temp").css({"top": this.state.imgRoot.offset().top - $(window).scrollTop(), "left": this.state.imgRoot.offset().left - $(window).scrollLeft(), height: this.state.imgRoot.outerHeight(), width: this.state.imgRoot.outerWidth()});
+        this.state.imgRoot.removeClass("bgd-fixed");
+
+        //  init img-temp
+        $("#img-temp").css({"top": this.state.imgRoot.offset().top - $(window).scrollTop(), "left": this.state.imgRoot.offset().left - $(window).scrollLeft(), 'height': this.state.imgRoot.outerHeight(), 'width': this.state.imgRoot.outerWidth()});
         $("#img-temp").attr("src",this.props.content.backgroundUrl);
         
+        console.log(this.state.imgRoot.outerHeight(), this.state.imgRoot.outerWidth());
         this.state.imgRoot.css("opacity", 0);
+
         this.imgShowUp();
-        $(".bgd-img").addClass("item-fade-out-center");
-        this.state.imgRoot.removeClass("item-fade-out-center");
+
+        $(".bgd-fixed").addClass("item-fade-out-center");
+        //this.state.imgRoot.removeClass("item-fade-out-center");
         
-        setTimeout(this.onShowDone, 500);
+        setTimeout(this.onShowDone, 350);
     }
 
     imgShowUp(){
@@ -79,36 +86,45 @@ class ItemProjectUpSlide extends React.Component{
             top: imgTarget.offset().top - $(window).scrollTop(),
             left: imgTarget.offset().left - $(window).scrollLeft()
           }, {
-            duration: 500,
+            duration: 350,
             easing: "linear"});
     }
 
+
+
     onShowDone(){
-        $(".img-view i").css("display", "inherit");
         $(".btn-close").css("display", "inherit");
         this.checkSlide();
         this.unSwitchImg();
         
     }
-    
+
 
     closeDetail(){
         $(".overlay").css("opacity", 0);
         $(".description").css("display", "none");
         $(".img-view i").css("display", "none");
+        $(".img-view").css("background-color", "transparent");
         $(".btn-close").css("display", "none");
+
+
         
-        $(".bgd-img").removeClass("item-fade-out-center");
+        $(".bgd-fixed").removeClass("item-fade-out-center");
+
         this.switchImg();
 
         $(".img-original").removeClass("img-slide");
         $(".img-original").css("opacity", 0);
+
+        
+        $("#img-temp").css({"top": this.state.imgDetail.offset().top - $(window).scrollTop(), "left": this.state.imgDetail.offset().left - $(window).scrollLeft(), height: this.state.imgDetail.outerHeight(), width: this.state.imgDetail.outerWidth()});
         
         this.imgCloseDown();
-        $(".bgd-img").addClass("item-fade-in-center");
-        this.state.imgRoot.removeClass("item-fade-in-center");
-       
-        setTimeout(this.closeDone, 500);
+
+        $(".bgd-fixed").addClass("item-fade-in-center");
+        //this.state.imgRoot.removeClass("item-fade-in-center");
+        
+        setTimeout(this.closeDone, 350);
     }
 
     imgCloseDown(){
@@ -118,8 +134,8 @@ class ItemProjectUpSlide extends React.Component{
             width: imgTarget.outerWidth(),
             top: imgTarget.offset().top - $(window).scrollTop(),
             left: imgTarget.offset().left - $(window).scrollLeft()
-          }, {
-            duration: 500,
+            }, {
+            duration: 350,
             easing: "linear"});
     }
 
@@ -127,8 +143,87 @@ class ItemProjectUpSlide extends React.Component{
         $(".preview").css("display", "none");
         $("#img-temp").css("opacity", 0);
         this.state.imgRoot.css("opacity", 1);
+        this.state.imgRoot.addClass("bgd-fixed");
         this.props.closeDetail();
     }
+
+    // showDetail(){
+    //     $(".preview").css("display", "grid");
+    //     $(".description").css("display", "flex");
+    //     $(".overlay").css("opacity", 1);
+    //     this.switchImg();
+    //     this.state.imgRoot = $("#img-project-"+this.props.content.id);
+    //     //var imgRoot = $("#img-project-"+this.props.content.id);
+
+    //     $("#img-temp").css({"top": this.state.imgRoot.offset().top - $(window).scrollTop(), "left": this.state.imgRoot.offset().left - $(window).scrollLeft(), height: this.state.imgRoot.outerHeight(), width: this.state.imgRoot.outerWidth()});
+    //     $("#img-temp").attr("src",this.props.content.backgroundUrl);
+        
+    //     this.state.imgRoot.css("opacity", 0);
+    //     this.imgShowUp();
+    //     $(".bgd-fixed").addClass("item-fade-out-center");
+    //     this.state.imgRoot.removeClass("item-fade-out-center");
+        
+    //     setTimeout(this.onShowDone, 350);
+    // }
+
+    // imgShowUp(){
+    //     var imgTarget = $("#img-item-0");
+    //     $("#img-temp").animate({
+    //         height: imgTarget.outerHeight(),
+    //         width: imgTarget.outerWidth(),
+    //         top: imgTarget.offset().top - $(window).scrollTop(),
+    //         left: imgTarget.offset().left - $(window).scrollLeft()
+    //       }, {
+    //         duration: 350,
+    //         easing: "linear"});
+    // }
+
+    // onShowDone(){
+    //     $(".img-view i").css("display", "inherit");
+    //     $(".btn-close").css("display", "inherit");
+    //     this.checkSlide();
+    //     this.unSwitchImg();
+        
+    // }
+    
+
+    // closeDetail(){
+    //     $(".overlay").css("opacity", 0);
+    //     $(".description").css("display", "none");
+    //     $(".img-view i").css("display", "none");
+    //     $(".btn-close").css("display", "none");
+        
+    //     $(".bgd-fixed").removeClass("item-fade-out-center");
+    //     this.switchImg();
+
+    //     $(".img-original").removeClass("img-slide");
+    //     $(".img-original").css("opacity", 0);
+        
+    //     this.imgCloseDown();
+    //     $(".bgd-fixed").addClass("item-fade-in-center");
+    //     this.state.imgRoot.removeClass("item-fade-in-center");
+       
+    //     setTimeout(this.closeDone, 350);
+    // }
+
+    // imgCloseDown(){
+    //     var imgTarget =  this.state.imgRoot;
+    //     $("#img-temp").animate({
+    //         height: imgTarget.outerHeight(),
+    //         width: imgTarget.outerWidth(),
+    //         top: imgTarget.offset().top - $(window).scrollTop(),
+    //         left: imgTarget.offset().left - $(window).scrollLeft()
+    //       }, {
+    //         duration: 350,
+    //         easing: "linear"});
+    // }
+
+    // closeDone(){
+    //     $(".preview").css("display", "none");
+    //     $("#img-temp").css("opacity", 0);
+    //     this.state.imgRoot.css("opacity", 1);
+    //     this.props.closeDetail();
+    // }
 
     checkSlide(){
         var src = $("#img-item-0").attr("src");
@@ -197,7 +292,7 @@ class ItemProjectUpSlide extends React.Component{
                     </div>
                     
                 </div>
-                <div className="overlay"></div>
+                <div className='overlay'></div>
             </div>
         );
     }

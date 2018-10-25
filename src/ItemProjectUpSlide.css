@@ -6,22 +6,25 @@
     bottom: 0;
     z-index: 5;
     
-    background-color: transparent;
+    /* background-color: transparent; */
     width: 100vw;
     height: 100vh;
     display: none;
+    /* background-color: #252323; */
 }
 
 .img-view {
     height: 100vh;
     width: 50vw;
     display: grid;
-    -webkit-flex-wrap: wrap;
+    /* -webkit-flex-wrap: wrap;
+    -webkit-align-content: center; */
     flex-wrap: wrap;
-    -webkit-align-content: center;
     align-content: center;
     position: relative;
     overflow: hidden;
+    background-color: #1b1b1c;
+    z-index: 4;
 }
 
 .img-view > .view-original {
@@ -66,6 +69,7 @@
     transform: translateY(-50%);
     opacity: 0.4;
     display: none;
+    z-index: 6;
 }
 
 .preview i:hover{
@@ -86,7 +90,7 @@
 .preview .btn-close{
     position: fixed;
     top: 30px;
-    right: 30px;
+    right: 10px;
     z-index: 7;
     padding: 0;
     background: transparent;
@@ -109,7 +113,8 @@
     -ms-flex-line-pack: center;
     align-content: center;
     position: absolute;
-    overflow-y: scroll;
+    overflow-y: auto;
+    overflow-x: hidden;
     left: 50%;
     top: 0;
     padding: 0 28px;

@@ -19,6 +19,12 @@ class NavBar extends React.Component{
 
     componentDidMount(){
        
+        var psV = new PerfectScrollbar('#navv');
+        var psH = new PerfectScrollbar('#navh');
+
+        $("#navv").on("wheel", function ( e ) {
+            e.preventDefault();
+        });
     }
 
     setDelayMenuItem(){
@@ -59,7 +65,7 @@ class NavBar extends React.Component{
             $('.icon-expand').addClass("xstyle");
             $(".nav-horizontal .list-text").addClass("list-load-animation");
             this.setDelayMenuItem();
-            $('body').addClass('hide-scroll ');
+            $('body').addClass('hide-scroll');
         }
         isNavHorExpand = !isNavHorExpand;
     }
@@ -69,7 +75,7 @@ class NavBar extends React.Component{
             <div className="nav">
                 <div className="nav-vertical">
                     <div className="nav-left">
-                        <div id="navv" className="top list-menu scrollbar">
+                        <div id="navv" className="top list-menu scrollbar ps-container">
                             {this.props.menuList.map((item,index)=>(
                                 <p key={index}>{item.text}</p>
                             ))}
@@ -107,7 +113,7 @@ class NavBar extends React.Component{
                                 <i className="material-icons element-center" >remove</i>
                                 <i className="material-icons element-bottom">remove</i>
                             </div>
-                            <div className="list-text list-menu scrollbar">
+                            <div id="navh" className="list-text list-menu scrollbar ps-container">
                                 {this.props.menuList.map((item,index)=>(
                                     <p key={index}>{item.text}</p>
                                 ))}

@@ -1,9 +1,9 @@
-export var ProjectList = [
+var ProjectList = [
     {
         id: 1,
-        backgroundUrl: 'https://images.unsplash.com/photo-1540153448870-af780343526e?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=156b02ddcd899f8e70270bf6c4f57932&auto=format&fit=crop&w=1050&q=80',
+        backgroundUrl: 'http://demo.agnidesigns.com/fortune/demo3/wp-content/uploads/sites/4/2016/10/portfolio-thumbnail-1-960x480.jpg',
         listBackgroundUrl: [
-            'https://images.unsplash.com/photo-1540153448870-af780343526e?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=156b02ddcd899f8e70270bf6c4f57932&auto=format&fit=crop&w=1050&q=80',
+            'http://demo.agnidesigns.com/fortune/demo3/wp-content/uploads/sites/4/2016/10/portfolio-thumbnail-1-960x480.jpg',
             'http://demo.agnidesigns.com/fortune/demo3/wp-content/uploads/sites/4/2016/10/portfolio-thumbnail-9-960x480.jpg',
             'http://demo.agnidesigns.com/fortune/demo3/wp-content/uploads/sites/4/2016/10/portfolio-thumbnail-6-480x480.jpg',
             'http://demo.agnidesigns.com/fortune/demo3/wp-content/uploads/sites/4/2016/10/portfolio-thumbnail-4-480x480.jpg'
@@ -11,7 +11,7 @@ export var ProjectList = [
         background: 'portfolio-thumbnail-1-960x480.jpg',
         projecName: 'Pop',
         projectType: 'Logo Design',
-        textColor: 'white',
+        textColor: 'black',
         colBootstrap: 'col-sm-12 col-md-6',
         projectDescription: "Mauris bibendum mollis eros, sit amet bibendum mi feugiat a. Aliquam nec odio auctor, sodales odio sagittis, consequat ex. Donec ut sapien semper, mattis nunc a, aliquam nulla. Curabitur libero arcu, mattis eget tristique sit amet, mattis non turpis. Phasellus aliquam elit non turpis vestibulum, tempus laoreet tellus faucibus. Vivamus elementum lectus in justo tempor, nec efficitur lorem elementum. Morbi sagittis, ipsum id convallis facilisis, libero augue luctus tellus, a malesuada magna sapien eget magna.",
         author: "Gary L. Francione",
@@ -162,4 +162,68 @@ export var ProjectList = [
         projectLink: "http://demo.agnidesigns.com/fortune/demo3/portfolio/formula-creativa/"
     },
     
+];
+
+
+var MenuList = [
+    {
+        text: "Home",
+        link:""
+    },
+    {
+        text: "About Us",
+        link:"Works"
+    },
+    {
+        text: "Works & Our Project",
+        link:""
+    },
+    {
+        text: "New & Exiting Trends",
+        link:""
+    },
+    {
+        text: "Contact Us",
+        link:""
+    },
+    {
+        text: "Home",
+        link:""
+    },
+    {
+        text: "About Us",
+        link:"Works"
+    },
+    {
+        text: "Works & Our Project",
+        link:""
+    },
+    {
+        text: "New & Exiting Trends",
+        link:""
+    },
+    {
+        text: "Contact Us",
+        link:""
+    },
+    {
+        text: "Home",
+        link:""
+    },
+    {
+        text: "About Us",
+        link:"Works"
+    },
+    {
+        text: "Works & Our Project",
+        link:""
+    },
+    {
+        text: "New & Exiting Trends",
+        link:""
+    },
+    {
+        text: "Contact Us",
+        link:""
+    }
 ];

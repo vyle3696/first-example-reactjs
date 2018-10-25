@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {ProjectList} from './ProjectList.js';
+//import {ProjectList} from './ProjectList.js';
 
 import ItemProject from './ItemProject';
 //import ItemProjectUp from './ItemProjectUp';
@@ -13,8 +13,8 @@ class Home extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            list: ProjectList,
-            preview: ProjectList[0],
+            list: window.ProjectList,
+            preview: window.ProjectList[0],
             detail: ""
 
         }
@@ -25,7 +25,7 @@ class Home extends React.Component{
 
     onItemProjectClick(content){
         $(".bgd-img").removeClass("item-fade-in-center");
-        console.log(content);
+        // console.log(content);
         this.setState({
             detail: <ItemProjectUpSlide content={content} parent = {this} closeDetail = {this.closeDetail}/>
         });
