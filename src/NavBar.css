@@ -13,6 +13,7 @@
     top: 0;
     width: 310px;
     height: 100vh;  
+    max-height: 100%;
     left: -250px;
     background-color:  rgb(45, 46, 47);
     transition: all 0.5s ease;
@@ -72,7 +73,7 @@
 
 .nav-vertical .nav-left .top {
     padding-top: 15px;
-    padding-bottom: 50px;
+    padding-bottom: 30px;
 }
 
 
@@ -86,7 +87,7 @@
 
 .nav-vertical .nav-left> .bottom{
     position: absolute;
-    bottom: 10px;
+    bottom: 0;
     font-size: 11px;
     padding: 10px;
     right: 80px;
@@ -288,7 +289,7 @@
 }
 
 .nav-horizontal  .list-text> p {
-    margin: 10px;
+    margin: 0;
     cursor: pointer;
     /* font-size: 18px; */
     padding: 14px 0;

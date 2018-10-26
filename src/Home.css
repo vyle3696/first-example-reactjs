@@ -72,7 +72,8 @@ html, body {
 
 .copyright{
     opacity: 0.6;
-    font-size: 12px;
+    font-size: 10px;
+    margin: 0;
 }
 
 #btn-move-top{

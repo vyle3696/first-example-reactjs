@@ -64,7 +64,7 @@
     position: absolute;
     color: #c85e51;
     z-index: 7;
-    font-size: 70px;
+    font-size: 50px;
     top: 50%;
     transform: translateY(-50%);
     opacity: 0.4;
@@ -89,8 +89,9 @@
 
 .preview .btn-close{
     position: fixed;
-    top: 30px;
-    right: 10px;
+    transform: translateY(0);
+    top: 20px;
+    right: 20px;
     z-index: 7;
     padding: 0;
     background: transparent;
