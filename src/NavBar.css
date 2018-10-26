@@ -39,11 +39,14 @@
     
 }
 
-.list-menu p {
+.list-menu a {
     opacity: 0;
+    color: white;
+    display:block;
+    text-decoration: none;
 }
 
-.list-menu p:hover{
+.list-menu a:hover{
     color: #007aff;
 }
 
@@ -77,12 +80,12 @@
 }
 
 
-.nav-vertical .nav-left .top > p{
+.nav-vertical .nav-left .top > a{
     margin: 20px;
     /* padding: 10px 0; */
     cursor: pointer;
     opacity: 0;
-    transition: opacity 0.5s
+    transition: opacity 0.5s;
 }
 
 .nav-vertical .nav-left> .bottom{
@@ -129,10 +132,10 @@
 
 @keyframes showup1 {
     from{opacity: 0; transform: translateY(50%);}
-    to  { opacity: 1;transform: translateY(0%);}
+    to  { opacity: 1;transform: translateY(0);}
 }
 
-.list-load-animation > p {
+.list-load-animation > a {
     animation: showup1;
     animation-duration: 1s;
     animation-fill-mode: forwards;
@@ -198,6 +201,7 @@
     position: fixed;
     background-color:  rgb(45, 46, 47);
     transition: all 0.5s;
+    /* transition: all 0.8s cubic-bezier(0.77, 0, 0.175, 1) */
 
 }
 
@@ -277,22 +281,25 @@
     right: 0px;
     width: 100%;
     height: 100%;
-    padding-top: 5%;
+    padding: 5% 0;
     text-align: center;
     max-height: none;
     z-index: 1;
     right: -100%;
-    transition: all 0.5s ease-in;
+    /* transition: all 0.5s ease-in; */
+    transition: all 0.8s cubic-bezier(0.77, 0, 0.175, 1) ;
     margin-right: auto;
     margin-left: auto;
 
 }
 
-.nav-horizontal  .list-text> p {
+.nav-horizontal  .list-text> a {
     margin: 0;
     cursor: pointer;
     /* font-size: 18px; */
     padding: 14px 0;
+    display:block;
+    text-decoration: none;
    
 }
 

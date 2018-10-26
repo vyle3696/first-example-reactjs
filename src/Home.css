@@ -1,15 +1,11 @@
 
 * {
     box-sizing: border-box;
+    
 }
 
 a {
     cursor: pointer;
-}
-
-@font-face {
-    font-family: myFirstFont;
-    src: url(http://demo.agnidesigns.com/fortune/demo3/wp-content/plugins/js_composer/assets/css/vc_lte_ie9.min.css);
 }
 
 
@@ -19,8 +15,9 @@ body{
     text-transform: none;
     margin: 0;
     font-family: Verdana;
-    /* transition: all 4s; */
-    overflow: auto;
+    transition: all 4s;
+    overflow-x: hidden;
+    overflow-y: auto;
     /* font-family: Europa,Arial, Helvetica; */
 }
 
@@ -43,7 +40,6 @@ html, body {
     background-color: white;
     overflow: hidden;
 }
-
 
 .main-content {
     background-color: transparent;

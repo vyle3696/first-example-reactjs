@@ -1,6 +1,15 @@
 .item-project{
 
 }
+
+.item-project.dark-theme {
+    color: white;
+}
+
+.item-project.light-theme {
+    color: #333;
+}
+
 .item-project  .item-content .project-icon i {
     opacity: 0;
     color: black;

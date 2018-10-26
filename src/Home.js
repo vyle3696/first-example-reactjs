@@ -29,7 +29,6 @@ class Home extends React.Component{
         this.setState({
             detail: <ItemProjectUpSlide content={content} parent = {this} closeDetail = {this.closeDetail}/>
         });
-        $('body').addClass('hide-scroll');
     }
 
     closeDetail(){

@@ -122,7 +122,10 @@
     z-index: 6;
 }
 
-
+.description-inner{
+    height: max-content;
+    margin: auto 0;
+}
 
 .description h3{
     font-size: 24px;

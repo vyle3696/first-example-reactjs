@@ -29,7 +29,7 @@ class NavBar extends React.Component{
 
     setDelayMenuItem(){
         let deltaTime = 0.1;
-        $(".list-load-animation > p").each((index, element)=>{
+        $(".list-load-animation > a").each((index, element)=>{
             $(element).css("animation-delay", deltaTime * (index + 1) + "s");
         });
     }
@@ -77,7 +77,7 @@ class NavBar extends React.Component{
                     <div className="nav-left">
                         <div id="navv" className="top list-menu scrollbar ps-container">
                             {this.props.menuList.map((item,index)=>(
-                                <p key={index}>{item.text}</p>
+                                <a href={item.link} key={index}>{item.text}</a>
                             ))}
                         </div>
                         <div className="bottom">
@@ -124,7 +124,7 @@ class NavBar extends React.Component{
                             </div>
                             <div id="navh" className="list-text list-menu scrollbar ps-container">
                                 {this.props.menuList.map((item,index)=>(
-                                    <p key={index}>{item.text}</p>
+                                    <a href={item.link} key={index}>{item.text}</a>
                                 ))}
                             </div>
 

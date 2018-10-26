@@ -28,16 +28,27 @@ class ItemProjectUpSlide extends React.Component{
 
     componentDidMount(){
         this.initNewPreview()
-        this.showDetail();
+       
     }
 
 
 
     initNewPreview(){
+        let that = this;
         isFirstSlide = true;
         $("#img-item-0").attr('src', this.props.content.listBackgroundUrl[0]);
         this.state.indexBackground = 0;
         $(".img-original").css("opacity", 0);
+        $("#img-item-0")
+            .on('load', function() {
+                $('body').addClass('hide-scroll');
+                that.showDetail();
+
+            })
+            .on('error', function() {
+                 console.log("error loading image");
+             })
+        ;
     }
 
 
@@ -53,21 +64,26 @@ class ItemProjectUpSlide extends React.Component{
     }
 
     showDetail(){
+       
         $(".preview").css("display", "grid");
         $(".description").css("display", "flex");
         $(".overlay").css("opacity", 1);
 
         this.switchImg();
-        this.state.imgRoot = $("#img-project-"+this.props.content.id);
+        this.state.imgRoot = $("#img-project-" + this.props.content.id);
         this.state.imgDetail =  $("#img-item-0");
 
         this.state.imgRoot.removeClass("bgd-fixed");
-
-        //  init img-temp
-        $("#img-temp").css({"top": this.state.imgRoot.offset().top - $(window).scrollTop(), "left": this.state.imgRoot.offset().left - $(window).scrollLeft(), 'height': this.state.imgRoot.outerHeight(), 'width': this.state.imgRoot.outerWidth()});
-        $("#img-temp").attr("src",this.props.content.backgroundUrl);
         
-        console.log(this.state.imgRoot.outerHeight(), this.state.imgRoot.outerWidth());
+        let that = this;
+        
+        $("#img-temp").css({"top": that.state.imgRoot.offset().top - $(window).scrollTop(), "left": that.state.imgRoot.offset().left - $(window).scrollLeft(), 'height': that.state.imgRoot.outerHeight(), 'width': that.state.imgRoot.outerWidth()});
+        $("#img-temp").attr("src",that.props.content.backgroundUrl);
+       
+        //  init img-temp
+       
+        
+        console.log("root", this.state.imgRoot.outerHeight(), this.state.imgRoot.outerWidth());
         this.state.imgRoot.css("opacity", 0);
 
         this.imgShowUp();
@@ -76,9 +92,12 @@ class ItemProjectUpSlide extends React.Component{
         //this.state.imgRoot.removeClass("item-fade-out-center");
         
         setTimeout(this.onShowDone, 350);
+        
     }
 
     imgShowUp(){
+        
+        console.log("target", $("#img-item-0").outerHeight(), $("#img-item-0").outerWidth());
         var imgTarget = $("#img-item-0");
         $("#img-temp").animate({
             height: imgTarget.outerHeight(),
@@ -227,7 +246,7 @@ class ItemProjectUpSlide extends React.Component{
 
     checkSlide(){
         var src = $("#img-item-0").attr("src");
-        console.log(this.props.content.listBackgroundUrl.indexOf(src));
+        //console.log(this.props.content.listBackgroundUrl.indexOf(src));
 
         if(this.state.indexBackground == 0) {
             $("#btn-pre").css("display", "none");
@@ -268,8 +287,9 @@ class ItemProjectUpSlide extends React.Component{
 
     render(){
         return(
+
             <div className="preview">
-                <div className="img-view">
+                <div className="img-view col-xs-12 col-sm-12 col-md-6">
                         <i id="btn-pre" className="material-icons" onClick={this.onPreSlide}>chevron_left</i>
                         <i id="btn-next" className="material-icons" onClick={this.onNextSlide}>chevron_right</i>
                         <img id="img-temp" alt=""/>
@@ -284,13 +304,14 @@ class ItemProjectUpSlide extends React.Component{
                     
                 </div>
                 <i className="btn-close" onClick={this.closeDetail}><span className="glyphicon glyphicon-remove-circle"></span></i>
-                <div className="description">
-                    <h3>{this.props.content.projecName}</h3>
-                    <p>{this.props.content.projectDescription} <span>— {this.props.content.author}</span></p>
-                    <div className="details">
-                        <a href={this.props.content.projectLink}>{this.props.content.projectLink}</a>
+                <div className="description col-xs-12 col-sm-12 col-md-6">
+                    <div className='description-inner'>
+                        <h3 style={{marginTop:0}}>{this.props.content.projecName}</h3>
+                        <p>{this.props.content.projectDescription} <span>— {this.props.content.author}</span></p>
+                        <div className="details">
+                            <a href={this.props.content.projectLink}>{this.props.content.projectLink}</a>
+                        </div>
                     </div>
-                    
                 </div>
                 <div className='overlay'></div>
             </div>
@@ -300,10 +321,11 @@ class ItemProjectUpSlide extends React.Component{
 
 export default ItemProjectUpSlide;
 
-/* <ul>
-    <li><i className="fa fa-camera"></i><span>Canon PowerShot S95</span></li>
-    <li><i className="fa fa-eye"></i><span>22.5mm</span></li>
-    <li><i className="fa fa-print"></i><span>ƒ/5.6</span></li>
-    <li><i className="fa fa-cog"></i><span>1/1000</span></li>
-    <li><i className="fa fa-sun-o"></i><span>80</span></li>
-</ul> */
+{/* <div className="preview" style={{backgroundColor: 'red'}}>
+             <div className="row" style={{backgroundColor: 'red'}}>
+                <div className="col-xs-12 col-sm-12 col-md-6"></div>
+                <div className="col-xs-12 col-sm-12 col-md-6"></div>
+                </div>
+                
+            </div>
+ */}
