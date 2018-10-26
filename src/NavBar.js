@@ -36,7 +36,7 @@ class NavBar extends React.Component{
 
     onToggleMenuClick(event){
         if(isNavVerExpand){
-            $(".nav-vertical").css({left: '-250px'});
+            $(".nav-vertical").css({'left': '-250px'});
             $(".main-content").css({"left": '0'});
             
             $(".menu-close").text("MENU")
@@ -44,7 +44,7 @@ class NavBar extends React.Component{
 
         }
         else{
-            $(".nav-vertical").css({left: '0'});
+            $(".nav-vertical").css({'left': '0'});
             $(".main-content").css({"left": '250px'});
             $(".menu-close").text("CLOSE")
             $(".nav-vertical .nav-left > .top").addClass("list-load-animation");
@@ -55,7 +55,7 @@ class NavBar extends React.Component{
 
     onHorizontalMenuClick(){
         if(isNavHorExpand){
-            $(".nav-horizontal  .list-text").css("right", "-100%");
+            $(".nav-horizontal  .list-text").css('right', "-100%");
             $('.icon-expand').removeClass('xstyle');
             $(".nav-horizontal .list-text").removeClass("list-load-animation");
             $('body').removeClass('hide-scroll');
@@ -107,6 +107,15 @@ class NavBar extends React.Component{
                     </div>
 
                     <div className="menu-header">
+                    <div className="social-icon">
+                            <a><span><i className="material-icons" >share</i></span></a>
+                            <ul className="list-icon">
+                                <li><a target="_self" href="http://facebook.com/profile"> <i className="fa fa-facebook"></i></a></li>
+                                <li><a target="_self" href="http://twitter.com/"> <i className="fa fa-twitter"></i></a></li>
+                                <li><a target="_self" href="http://dribbble.com/"> <i className="fa fa-dribbble"></i></a></li>
+                            </ul>
+                            
+                        </div>
                         <div className="expand-menu">
                             <div className = "icon-expand"  onClick={this.onHorizontalMenuClick}>
                                 <i className="material-icons element-top " >remove</i>
@@ -118,15 +127,11 @@ class NavBar extends React.Component{
                                     <p key={index}>{item.text}</p>
                                 ))}
                             </div>
+
                         </div>
-                        <div className="social-icon">
-                            <a><span><i className="material-icons" >share</i></span></a>
-                            <ul className="list-icon">
-                                <li><a target="_self" href="http://facebook.com/profile"> <i className="fa fa-facebook"></i></a></li>
-                                <li><a target="_self" href="http://twitter.com/"> <i className="fa fa-twitter"></i></a></li>
-                                <li><a target="_self" href="http://dribbble.com/"> <i className="fa fa-dribbble"></i></a></li>
-                            </ul>
-                        </div>
+                        
+                        
+                       
                     </div>
                     
                 </div>
@@ -136,3 +141,5 @@ class NavBar extends React.Component{
 }
 
 export default NavBar;
+
+{/* <div className="expand"> <a><div className="burg"></div></a></div> */}
