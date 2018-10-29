@@ -1,14 +1,17 @@
+
+var isNavVerExpand = false;
+var isNavHorExpand = false;
 $(document).ready(function(){
-	var $grid = $('.grid').masonry({
-	    itemSelector: '.grid-item',
-	    //gutter: 10,
-	    columnWidth: '.grid-sizer',
-	    percentPosition: true
-	    //fitWidth: true
-	    
+    var $grid = $('.grid').masonry({
+        itemSelector: '.grid-item',
+        //gutter: 10,
+        columnWidth: '.grid-sizer',
+        percentPosition: true
+        //fitWidth: true
+        
     });
     
-	// var psV = new PerfectScrollbar('#navv');
+// var psV = new PerfectScrollbar('#navv');
     // var psH = new PerfectScrollbar('#navh');
     (function($) {
         $.fn.hasScrollBar = function(value) {
@@ -43,9 +46,9 @@ $(document).ready(function(){
             $(".btn-close").css("right", "20px");
             console.log(false);
         }
-      });
+    });
 
-      $grid.imagesLoaded()
+    $grid.imagesLoaded()
         .progress( function() {
         $grid.masonry('layout');
         })
