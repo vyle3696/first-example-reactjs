@@ -1,10 +1,8 @@
 import React from 'react';
 
-//import {ProjectList} from './ProjectList.js';
-
 import ItemProject from './ItemProject';
-//import ItemProjectUp from './ItemProjectUp';
-import ItemProjectUpSlide from './ItemProjectUpSlide';
+
+import Detail from './Detail';
 
 import './Home.css';
 import $ from 'jquery';
@@ -26,8 +24,12 @@ class Home extends React.Component{
     onItemProjectClick(content){
         $(".bgd-img").removeClass("item-fade-in-center");
         // console.log(content);
+        // this.setState({
+        //     detail: <ItemProjectUpSlide content={content} parent = {this} closeDetail = {this.closeDetail}/>
+        // });
+
         this.setState({
-            detail: <ItemProjectUpSlide content={content} parent = {this} closeDetail = {this.closeDetail}/>
+            detail: <Detail content={content} parent = {this} closeDetail = {this.closeDetail}/>
         });
     }
 

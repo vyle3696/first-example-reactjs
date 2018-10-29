@@ -4,8 +4,6 @@ import Home from './Home';
 import Footer from './Footer';
 import Loading from './Loading';
 
-//import {MenuList} from './MenuList';
-
 class Main extends React.Component{
     constructor(props){
         super(props);
