@@ -4,6 +4,13 @@ import Home from './Home';
 import Footer from './Footer';
 import Loading from './Loading';
 
+import $ from "jquery";
+
+import {
+  Route,
+  Switch
+  } from 'react-router-dom';  
+
 class Main extends React.Component{
     constructor(props){
         super(props);
@@ -15,14 +22,14 @@ class Main extends React.Component{
     render(){
         return(
             <div>
-                <NavBar menuList={this.state.menuList}/>
+                <NavBar menuList={this.state.menuList} root={this.props.root} parent={this}/>
                 <Home/>
                 <Footer/>
                 <div id="btn-move-top">
                     <a href="#grid-sizer"><i className="fa fa-angle-up"></i></a>
                 </div>
                 <Loading/>
-
+                
             </div>
         );
     }

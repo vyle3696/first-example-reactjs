@@ -178,62 +178,77 @@ var ProjectList = [
 var MenuList = [
     {
         text: "Home",
-        link:"http://demo.agnidesigns.com/fortune/demo3/portfolio/pop/"
+        link:"http://demo.agnidesigns.com/fortune/demo3/portfolio/pop/",
+        isPrivate: false
     },
     {
         text: "About Us",
-        link:"Works"
+        link:"Works",
+        isPrivate: true
     },
     {
         text: "Works & Our Project",
-        link:""
+        link:"",
+        isPrivate: false
     },
     {
         text: "New & Exiting Trends",
-        link:""
+        link:"",
+        isPrivate: false
     },
     {
         text: "Contact Us",
-        link:""
+        link:"",
+        isPrivate: false
     },
     {
         text: "Home",
-        link:""
+        link:"",
+        isPrivate: false
     },
     {
         text: "About Us",
-        link:"Works"
+        link:"Works",
+        isPrivate: false
     },
     {
         text: "Works & Our Project",
-        link:""
+        link:"",
+        isPrivate: false
     },
     {
         text: "New & Exiting Trends",
-        link:""
+        link:"",
+        isPrivate: false
     },
     {
         text: "Contact Us",
-        link:""
+        link:"",
+        isPrivate: false
     },
     {
         text: "Home",
-        link:""
+        link:"",
+        isPrivate: false
     },
     {
         text: "About Us",
-        link:"Works"
+        link:"Works",
+        isPrivate: false
     },
     {
         text: "Works & Our Project",
-        link:""
+        link:"",
+        isPrivate: false
     },
     {
         text: "New & Exiting Trends",
-        link:""
+        link:"",
+        isPrivate: false
     },
     {
         text: "Contact Us",
-        link:""
+        link:"",
+        isPrivate: false
     }
 ];

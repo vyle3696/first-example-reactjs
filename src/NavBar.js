@@ -13,6 +13,8 @@ class NavBar extends React.Component{
         super(props);
         this.onToggleMenuClick = this.onToggleMenuClick.bind(this);
         this.onHorizontalMenuClick = this.onHorizontalMenuClick.bind(this);
+        this.onMenuItemClick = this.onMenuItemClick.bind(this);
+
     }
 
 
@@ -28,7 +30,7 @@ class NavBar extends React.Component{
 
     setDelayMenuItem(){
         let deltaTime = 0.1;
-        $(".list-load-animation > a").each((index, element)=>{
+        $(".list-load-animation > .menu-item").each((index, element)=>{
             $(element).css("animation-delay", deltaTime * (index + 1) + "s");
         });
     }
@@ -69,6 +71,36 @@ class NavBar extends React.Component{
         isNavHorExpand = !isNavHorExpand;
     }
 
+
+    onMenuItemClick(item, id){
+        if(item.isPrivate){
+           this.props.parent.props.history.push("/confirm/"+ id);
+        }else{
+            if(this.isValidURL(item.link)){
+                window.location.assign(item.link);
+            }else{
+                this.props.parent.props.history.push("/about");
+            }
+           
+        }
+    }
+
+    
+    isValidURL(str) {
+        var pattern = new RegExp('^((https?:)?\\/\\/)?'+ // protocol
+            '(?:\\S+(?::\\S*)?@)?' + // authentication
+            '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|'+ // domain name
+            '((\\d{1,3}\\.){3}\\d{1,3}))'+ // OR ip (v4) address
+            '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*'+ // port and path
+            '(\\?[;&a-z\\d%_.~+=-]*)?'+ // query string
+            '(\\#[-a-z\\d_]*)?$','i'); // fragment locater
+        if (!pattern.test(str)) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
     render(){
         return(
             <div className="nav">
@@ -76,7 +108,7 @@ class NavBar extends React.Component{
                     <div className="nav-left">
                         <div id="navv" className="top list-menu scrollbar ps-container">
                             {this.props.menuList.map((item,index)=>(
-                                <a href={item.link} key={index}>{item.text}</a>
+                                <p className="menu-item" key={index} onClick={()=>{this.onMenuItemClick(item, index)}}>{item.text} </p>
                             ))}
                         </div>
                         <div className="bottom">
@@ -123,7 +155,7 @@ class NavBar extends React.Component{
                             </div>
                             <div id="navh" className="list-text list-menu scrollbar ps-container">
                                 {this.props.menuList.map((item,index)=>(
-                                    <a href={item.link} key={index}>{item.text}</a>
+                                    <p className="menu-item" key={index} onClick={()=>{this.onMenuItemClick(item, index)}}>{item.text}</p>
                                 ))}
                             </div>
 
