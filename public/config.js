@@ -178,7 +178,7 @@ var ProjectList = [
 var MenuList = [
     {
         text: "Home",
-        link:""
+        link:"http://demo.agnidesigns.com/fortune/demo3/portfolio/pop/"
     },
     {
         text: "About Us",

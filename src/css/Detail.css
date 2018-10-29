@@ -161,7 +161,7 @@
 
 .description p {
     color: rgb(204, 204, 204);
-    font-size: 17px;
+    font-size: 16px;
     line-height: 30.6px;
     font-weight: 300;
     /* max-height: 70vh; */
@@ -221,6 +221,18 @@
     .description {
         overflow: hidden;
         height: max-content;
+    }
+
+    .description h3 {
+        font-size: 17px;
+    }
+
+    .description p{
+        font-size: 13px;
+    }
+
+    .description .details {
+        font-size: 13px;
     }
 
 }  

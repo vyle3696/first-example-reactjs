@@ -4,7 +4,7 @@ import ItemProject from './ItemProject';
 
 import Detail from './Detail';
 
-import './Home.css';
+import './css/Home.css';
 import $ from 'jquery';
 
 class Home extends React.Component{

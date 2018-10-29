@@ -2,7 +2,7 @@ import React from 'react';
 import $ from 'jquery';
 import jQuery from 'jquery';
 
-import './Detail.css';
+import './css/Detail.css';
 var isFirstSlide = true;
 class Detail extends React.Component{
     constructor(props){

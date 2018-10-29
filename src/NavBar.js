@@ -3,8 +3,7 @@ import $ from 'jquery';
 
 import PerfectScrollbar from 'perfect-scrollbar';
 
-import './index.css';
-import './NavBar.css';
+import './css/NavBar.css';
 
 var isNavVerExpand = false;
 var isNavHorExpand = false;

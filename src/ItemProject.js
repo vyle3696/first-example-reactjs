@@ -1,7 +1,6 @@
 import React from 'react';
 
-import './Home.css';
-import './ItemProject.css';
+import './css/ItemProject.css';
 
 class ItemProject extends React.Component{
     render(){
