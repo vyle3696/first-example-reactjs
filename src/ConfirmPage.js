@@ -2,7 +2,7 @@ import React from 'react';
 import './css/ConfirmPage.css';
 import $ from 'jquery';
 import { Redirect } from 'react-router';
-
+import {Support} from './Support.js';
 
 
 class ConfirmPage extends React.Component{
@@ -28,20 +28,24 @@ class ConfirmPage extends React.Component{
 	onConfirmSubmit(){
 
 		if($("#password").val() == "123456"){
-            this.confirmSuccess("ok");
+            this.confirmSuccess(window.MenuList[this.props.match.params.id].link);
         }else{
             this.confirmFailed();
         }
 	}
 
-    confirmSuccess(data){
+    confirmSuccess(path){
 		//console.log(data);
         //this.setState({isLoged: true})
-        //this.props.history.push("/");
-        window.location.assign(window.location.origin + window.MenuList[this.props.match.params.id].link);
+		//this.props.history.push("/");
+		if(Support.isValidURL(path)){
+			window.location.assign(path);
+		}else{
+			window.location.assign(window.location.origin + window.MenuList[this.props.match.params.id].link);
+		}
 	}
 	confirmFailed(){
-        
+        this.setState({notice:  "password is incorrect"});
 	}
 
 	render(){

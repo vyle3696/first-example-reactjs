@@ -183,72 +183,72 @@ var MenuList = [
     },
     {
         text: "About Us",
-        link:"Works",
+        link:"/about",
         isPrivate: true
     },
     {
         text: "Works & Our Project",
-        link:"",
+        link:"/works",
         isPrivate: false
     },
     {
         text: "New & Exiting Trends",
-        link:"",
+        link:"/trends",
         isPrivate: false
     },
     {
         text: "Contact Us",
-        link:"",
+        link:"/contact",
         isPrivate: false
     },
     {
         text: "Home",
-        link:"",
+        link:"http://demo.agnidesigns.com/fortune/demo3/portfolio/pop/",
         isPrivate: false
     },
     {
         text: "About Us",
-        link:"Works",
-        isPrivate: false
+        link:"/about",
+        isPrivate: true
     },
     {
         text: "Works & Our Project",
-        link:"",
+        link:"/works",
         isPrivate: false
     },
     {
         text: "New & Exiting Trends",
-        link:"",
+        link:"/trends",
         isPrivate: false
     },
     {
         text: "Contact Us",
-        link:"",
+        link:"/contact",
         isPrivate: false
     },
     {
         text: "Home",
-        link:"",
+        link:"http://demo.agnidesigns.com/fortune/demo3/portfolio/pop/",
         isPrivate: false
     },
     {
         text: "About Us",
-        link:"Works",
-        isPrivate: false
+        link:"/about",
+        isPrivate: true
     },
     {
         text: "Works & Our Project",
-        link:"",
+        link:"/works",
         isPrivate: false
     },
     {
         text: "New & Exiting Trends",
-        link:"",
+        link:"/trends",
         isPrivate: false
     },
     {
         text: "Contact Us",
-        link:"",
+        link:"/contact",
         isPrivate: false
-    }
+    },
 ];

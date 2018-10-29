@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 
 
 import Main from './Main';
+import Error from './Error';
+import About from './About';
 import ConfirmPage from './ConfirmPage';
 
 import $ from "jquery";
@@ -11,7 +13,7 @@ import {
   Switch
   } from 'react-router-dom';  
 
-
+  import marked from "marked";
 
 class App extends Component {
  
@@ -22,8 +24,12 @@ class App extends Component {
     return(
         <div>
         <Switch>
-            <Route path="/confirm/:id" render={(props)=><ConfirmPage {...props} root={this} url="success"/>}/>
-             <Route path="/" render={(props)=><Main {...props} root={this}/>} />
+            <Route exact  path="/confirm/:id" render={(props)=><ConfirmPage {...props} root={this} url="success"/>}/>
+            <Route exact path="/about" render={(props)=><About {...props} root={this}/>} />
+            
+            <Route exact  path="/" render={(props)=><Main {...props} root={this}/>} />
+            
+            <Route component={Error} />
         </Switch>
         </div>
     );
