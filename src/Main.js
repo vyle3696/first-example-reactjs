@@ -15,17 +15,20 @@ class Main extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            menuList: window.MenuList
+            menuList: window.MenuList,
+            
 
         }
+        
     }
+    
     componentDidMount(){
         console.log('load Main');
     }
     render(){
         return(
             <div>
-                <NavBar menuList={this.state.menuList} root={this.props.root} parent={this}/>
+                
                 <Home/>
                 <Footer/>
                 <div id="btn-move-top">

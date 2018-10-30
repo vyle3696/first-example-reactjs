@@ -178,7 +178,7 @@ var ProjectList = [
 var MenuList = [
     {
         text: "Home",
-        link:"http://demo.agnidesigns.com/fortune/demo3/portfolio/pop/",
+        link:"/",
         isPrivate: false
     },
     {
@@ -193,7 +193,7 @@ var MenuList = [
     },
     {
         text: "New & Exiting Trends",
-        link:"/trends",
+        link:"/http://demo.agnidesigns.com/fortune/demo3/portfolio/pop/",
         isPrivate: false
     },
     {

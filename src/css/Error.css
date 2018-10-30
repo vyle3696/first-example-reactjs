@@ -1,12 +1,22 @@
-/* Styles of the 404 page of my website. */
+Styles of the 404 page of my website.
 
 body {
+    
+}
+
+.code-container{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     background: #081421;
     color: #d3d7de;
     font-family: "Courier new";
     font-size: 18px;
     line-height: 1.5em;
-	cursor: default;
+    cursor: default;
+    z-index: 10;
 }
 
 a {

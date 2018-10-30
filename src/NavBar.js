@@ -5,12 +5,20 @@ import PerfectScrollbar from 'perfect-scrollbar';
 
 import './css/NavBar.css';
 import {Support} from './Support.js';
+import PropTypes from "prop-types";
+import { withRouter } from 'react-router-dom'
 
 
 var isNavVerExpand = false;
 var isNavHorExpand = false;
 
 class NavBar extends React.Component{
+    static propTypes = {
+        match: PropTypes.object.isRequired,
+        location: PropTypes.object.isRequired,
+        history: PropTypes.object.isRequired
+      };
+
     constructor(props){
         super(props);
         this.onToggleMenuClick = this.onToggleMenuClick.bind(this);
@@ -21,6 +29,7 @@ class NavBar extends React.Component{
 
 
     componentDidMount(){
+        console.log('nav');
         window.controllNavigation();
         var psV = new PerfectScrollbar('#navv');
         var psH = new PerfectScrollbar('#navh');
@@ -76,18 +85,19 @@ class NavBar extends React.Component{
 
     onMenuItemClick(item, id){
         if(item.isPrivate){
-           this.props.parent.props.history.push("/confirm/"+ id);
+           this.props.history.push("/confirm/"+ id);
         }else{
             if(Support.isValidURL(item.link)){
                 window.location.assign(item.link);
             }else{
-                this.props.parent.props.history.push(item.link);
+                this.props.history.push(item.link);
                 //window.location.assign(window.location.origin + item.link);
             }
         }
     }
 
     render(){
+        const { match, location, history } = this.props;
         return(
             <div className="nav">
                 <div className="nav-vertical">
@@ -157,6 +167,6 @@ class NavBar extends React.Component{
     }
 }
 
-export default NavBar;
+export default withRouter(NavBar);
 
 {/* <div className="expand"> <a><div className="burg"></div></a></div> */}

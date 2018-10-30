@@ -47,7 +47,7 @@ class Home extends React.Component{
 
     render(){
         return(
-            <div className="main-content">
+            
                 <div className="project-list">
                     <div className=" row grid">
                         <div id="grid-sizer" className="grid-sizer "></div>
@@ -58,8 +58,7 @@ class Home extends React.Component{
 
                     {this.state.detail}
                 </div>
-                {}
-            </div>
+            
         );
     }
 }

@@ -4,9 +4,34 @@ import marked from "marked";
 class About extends React.Component{
     constructor(props){
         super(props);
-        this.state = {};
+        this.state = {
+          idPage: 1
+        };
+        this.checkPermission = this.checkPermission.bind(this);
+
+       
     }
+
+    checkPermission(){
+      console.log(sessionStorage.getItem("permission"));
+       let path = this.props.location.search;
+        if( !sessionStorage.getItem("permission") || !(path.substr(3) == sessionStorage.getItem("permission")) ){
+          this.props.history.push("/confirm/"+ this.state.idPage);
+        }else{
+          sessionStorage.removeItem("permission");
+          sessionStorage.clear();
+        }
+
+
+    }
+
+    componentDidUpdate(){
+     
+    }
+
     componentWillMount() {
+      this.checkPermission();
+
         const readmePath = require("./markdowns/about.md");
       
         fetch(readmePath)
@@ -22,7 +47,7 @@ class About extends React.Component{
 
     componentDidMount(){
       console.log('load About');
-  }
+    }
 
     render() {
     const { markdown } = this.state;
