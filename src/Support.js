@@ -1,6 +1,6 @@
 export var Support = {
     
-    isValidURL : (str)=>{
+    isValidURL(str){
         var pattern = new RegExp('^((https?:)?\\/\\/)?'+ // protocol
             '(?:\\S+(?::\\S*)?@)?' + // authentication
             '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|'+ // domain name
@@ -13,7 +13,9 @@ export var Support = {
         } else {
             return true;
         }
-    }
+    },
 
-    
+    generateKey(){
+        return Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+    }
 }

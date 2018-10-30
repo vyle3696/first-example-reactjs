@@ -14,9 +14,6 @@ import {
   Route,
   Switch
   } from 'react-router-dom';  
-
-  import marked from "marked";
-
   
 class App extends Component {
   componentDidMount(){
@@ -26,8 +23,6 @@ class App extends Component {
   render() {
     return(
         <div>
-
-          
           <NavBar menuList={window.MenuList} root={this}/>
           <div className="main-content">
             <Switch>

@@ -254,3 +254,5 @@ var MenuList = [
 ];
 
 console.log('load config');
+
+var permission = "";

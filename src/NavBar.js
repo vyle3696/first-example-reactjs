@@ -21,7 +21,7 @@ class NavBar extends React.Component{
 
     constructor(props){
         super(props);
-        this.onToggleMenuClick = this.onToggleMenuClick.bind(this);
+        this.onVerticalMenuClick = this.onVerticalMenuClick.bind(this);
         this.onHorizontalMenuClick = this.onHorizontalMenuClick.bind(this);
         this.onMenuItemClick = this.onMenuItemClick.bind(this);
 
@@ -46,7 +46,7 @@ class NavBar extends React.Component{
         });
     }
 
-    onToggleMenuClick(event){
+    onVerticalMenuClick(){
         if(isNavVerExpand){
             $(".nav-vertical").css({'left': '-250px'});
             $(".main-content").css({"left": '0'});
@@ -83,7 +83,7 @@ class NavBar extends React.Component{
     }
 
 
-    onMenuItemClick(item, id){
+    onMenuItemClick(item, id, isVertical){
         if(item.isPrivate){
            this.props.history.push("/confirm/"+ id);
         }else{
@@ -93,6 +93,12 @@ class NavBar extends React.Component{
                 this.props.history.push(item.link);
                 //window.location.assign(window.location.origin + item.link);
             }
+        }
+
+        if(isVertical){
+            this.onVerticalMenuClick();
+        }else{
+            this.onHorizontalMenuClick();
         }
     }
 
@@ -104,7 +110,7 @@ class NavBar extends React.Component{
                     <div className="nav-left">
                         <div id="navv" className="top list-menu scrollbar ps-container">
                             {this.props.menuList.map((item,index)=>(
-                                <p className="menu-item" key={index} onClick={()=>{this.onMenuItemClick(item, index)}}>{item.text} </p>
+                                <p className="menu-item" key={index} onClick={()=>{this.onMenuItemClick(item, index, true)}}>{item.text} </p>
                             ))}
                         </div>
                         <div className="bottom">
@@ -116,7 +122,7 @@ class NavBar extends React.Component{
                             <img src={require("./images/fortune-logo3_white.png")} alt="home-logo"/>
                         </div>
                         <div className="center">
-                            <p className="menu-close" onClick={this.onToggleMenuClick}>MENU</p>
+                            <p className="menu-close" onClick={this.onVerticalMenuClick}>MENU</p>
                         </div>
                         <div className="bottom">
                             <div className="social-icon">
@@ -151,7 +157,7 @@ class NavBar extends React.Component{
                             </div>
                             <div id="navh" className="list-text list-menu scrollbar ps-container">
                                 {this.props.menuList.map((item,index)=>(
-                                    <p className="menu-item" key={index} onClick={()=>{this.onMenuItemClick(item, index)}}>{item.text}</p>
+                                    <p className="menu-item" key={index} onClick={()=>{this.onMenuItemClick(item, index, false)}}>{item.text}</p>
                                 ))}
                             </div>
 

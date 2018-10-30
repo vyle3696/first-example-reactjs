@@ -222,7 +222,8 @@ class ConfirmPage extends React.Component{
 
     confirmSuccess(){
 		let path = window.MenuList[this.props.match.params.id].link;
-		let permissionKey = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+		let permissionKey = Support.generateKey();
+		window.permission = permissionKey;
 		sessionStorage.setItem("permission", permissionKey);
 		if(Support.isValidURL(path)){
 			window.location.assign(path);
