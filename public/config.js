@@ -252,3 +252,5 @@ var MenuList = [
         isPrivate: false
     },
 ];
+
+console.log('load config');

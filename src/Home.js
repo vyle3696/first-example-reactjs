@@ -21,6 +21,11 @@ class Home extends React.Component{
         this.closeDetail = this.closeDetail.bind(this);
     }
 
+    componentDidMount(){
+        window.loadMarsonry();
+        window.controllButtonMoveTop();
+    }
+
     onItemProjectClick(content){
         $(".bgd-img").removeClass("item-fade-in-center");
         // console.log(content);

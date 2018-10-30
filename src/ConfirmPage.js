@@ -1,5 +1,5 @@
 import React from 'react';
-import './css/ConfirmPage.css';
+import './css/ConfirmPage.scss';
 import $ from 'jquery';
 import { Redirect } from 'react-router';
 import {Support} from './Support.js';
@@ -19,6 +19,10 @@ class ConfirmPage extends React.Component{
 		this.confirmSuccess = this.confirmSuccess.bind(this);
 		this.confirmFailed = this.confirmFailed.bind(this);
 	}
+
+	componentDidMount(){
+        console.log('load confirm');
+    }
 
 	onConfirmClick(e) {
 		e.preventDefault();
@@ -41,7 +45,8 @@ class ConfirmPage extends React.Component{
 		if(Support.isValidURL(path)){
 			window.location.assign(path);
 		}else{
-			window.location.assign(window.location.origin + window.MenuList[this.props.match.params.id].link);
+			this.props.history.push(window.MenuList[this.props.match.params.id].link);
+			//window.location.assign(window.location.origin + window.MenuList[this.props.match.params.id].link);
 		}
 	}
 	confirmFailed(){
@@ -51,19 +56,22 @@ class ConfirmPage extends React.Component{
 	render(){
 		
 			return(
-			<div className="confirm-page">
-				<div className="row confirm-page-inner">
-					<div className="confirm-form  col-xs-12	col-sm-6	col-md-4">
-                    <h2 style={{padding:"20px"}}>Enter password</h2>
-					<form onSubmit={ this.onConfirmClick } id="confirm-content" className="content">
-						
-                        <input id="password" type="password" name="pass" placeholder="Password"/>
-                        <button id="submit" onClick={this.onConfirmClick} >Confirm</button>
-					</form>
-			      <p id="notice">{this.state.notice}</p>
-			    </div>
+				<div class="container">
+				<div class="window">
+						<div class="handle">
+								<div class="buttons">
+										<button class="close">
+										</button>
+										<button class="minimize">
+										</button>
+										<button class="maximize">
+										</button>
+								</div>
+								<span class="title"></span>
+						</div>
+						<div class="terminal"></div>
 				</div>
-			</div>
+		</div>
 		);
 		
 	}

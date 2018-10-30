@@ -28,6 +28,7 @@ class Detail extends React.Component{
     }
 
     componentDidMount(){
+        window.controllDetailPage();
         this.initNewPreview();
        
     }

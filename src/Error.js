@@ -1,5 +1,9 @@
 import React from 'react';
-import marked from "marked";
+
+import './css/Error.css';
+import {
+  Link
+  } from 'react-router-dom';  
 
 class Error extends React.Component{
     constructor(props){
@@ -7,27 +11,37 @@ class Error extends React.Component{
         this.state = {};
     }
     componentWillMount() {
-        const readmePath = require("./404.md");
-      
-        fetch(readmePath)
-          .then(response => {
-            return response.text()
-          })
-          .then(text => {
-            this.setState({
-              markdown: marked(text)
-            })
-          })
+       
     }
 
     render() {
-    const { markdown } = this.state;
 
-    return (
-        <section>
-        <article dangerouslySetInnerHTML={{__html: markdown}}></article>
-        </section>
-    )
+      return (
+        <div class="code-area">
+        <span style={{color: "#777",fontStyle:"italic",}}>
+          // 404 page not found.
+        </span>
+        <span>
+              <span style={{color:"#d65562"}}>if </span>
+          
+              (<span style={{color:"#4ca8ef"}}>!</span>
+              <span style={{fontStyle: 'italic', color:'#bdbdbd'}}>found</span>)
+            
+            </span>
+        <span>
+          <span style={{paddingLeft: '15px', color:"#2796ec"}}>
+            <i style={{width: '10px', display:'inline-block'}}></i>throw
+          </span>
+          <span>
+            (<span style={{color: '#a6a61f'}}>"(╯°□°)╯︵ ┻━┻"</span>);
+          </span>
+          <span style={{display:'block'}}>}</span>
+          <span style={{color: '#777', fontStyle:'italic'}}>
+            // <Link to="/">Go home!</Link>
+          </span>
+        </span>
+      </div>
+      )
     }
 }
 

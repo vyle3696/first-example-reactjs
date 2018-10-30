@@ -7,7 +7,7 @@ class About extends React.Component{
         this.state = {};
     }
     componentWillMount() {
-        const readmePath = require("./about.md");
+        const readmePath = require("./markdowns/about.md");
       
         fetch(readmePath)
           .then(response => {
@@ -19,6 +19,10 @@ class About extends React.Component{
             })
           })
     }
+
+    componentDidMount(){
+      console.log('load About');
+  }
 
     render() {
     const { markdown } = this.state;

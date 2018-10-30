@@ -19,10 +19,9 @@ import {
   
 class App extends Component {
   componentDidMount(){
-    
+    console.log('load App');
     
   }
-
   render() {
     return(
         <div>

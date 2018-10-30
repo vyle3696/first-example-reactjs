@@ -6,6 +6,7 @@ import PerfectScrollbar from 'perfect-scrollbar';
 import './css/NavBar.css';
 import {Support} from './Support.js';
 
+
 var isNavVerExpand = false;
 var isNavHorExpand = false;
 
@@ -20,7 +21,7 @@ class NavBar extends React.Component{
 
 
     componentDidMount(){
-       
+        window.controllNavigation();
         var psV = new PerfectScrollbar('#navv');
         var psH = new PerfectScrollbar('#navh');
 
@@ -80,8 +81,8 @@ class NavBar extends React.Component{
             if(Support.isValidURL(item.link)){
                 window.location.assign(item.link);
             }else{
-                //this.props.parent.props.history.push(item.link);
-                window.location.assign(window.location.origin + item.link);
+                this.props.parent.props.history.push(item.link);
+                //window.location.assign(window.location.origin + item.link);
             }
         }
     }
