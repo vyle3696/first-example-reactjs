@@ -42,7 +42,6 @@ class About extends React.Component{
     render() {
       if(this.state.markdown){
           return (
-        
             <section className="markdown-section">
             <article dangerouslySetInnerHTML={{__html: this.state.markdown}}></article>
             </section>
