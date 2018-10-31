@@ -1,7 +1,7 @@
 import React from 'react';
 import './css/ConfirmPage.css';
 import $ from 'jquery';
-import { Redirect } from 'react-router';
+
 import {Support} from './Support.js';
 
 
@@ -10,7 +10,6 @@ class ConfirmPage extends React.Component{
         super(props);
 		this.state = {
             notice: "",
-            isLoged: false
 		}
 1	
 		this.confirmSuccess = this.confirmSuccess.bind(this);
@@ -68,14 +67,12 @@ class ConfirmPage extends React.Component{
 			var title = $(".title");
 			var terminal = $(".terminal");
 			var prompt = "➜";
-			var path = "~";
-	
+			var path = "w3steam$";
+			var levelToSaySorry = 0;
 			var commandHistory = [];
 			var historyIndex = 0;
 	
 			var command = "";
-			
-
 			var pass = '123456';
 	
 			function processCommand() {
@@ -105,23 +102,27 @@ class ConfirmPage extends React.Component{
 
 					if(cmd == pass){
 						isValid = true;
-						terminal.append("zsh: <span style='color:#00ff2d; font-weight: bold'><3 <3 <3 =====>>>>>>>>>></span>"  + "\n");
-						setTimeout( that.confirmSuccess, 350);
+						setInterval(function(){ terminal.append('<span class="fa fa-heart" style="color:#00ff2d"> </span>') }, 50);
+						setTimeout( that.confirmSuccess, 1500);
+						return true;
 					}
 
 					// No match was found...
-					if (!isValid) {
-						terminal.append("zsh: <span style='color:red; font-weight: bold'>(>.<)Sai quá sai dòiiii(0.0)</span>"  + "\n");
+					if (!isValid) {	
+											
+						terminal.append('~bath: <span style="color:red; font-weight: bold"><span class="fa fa-bomb"> </span>' + Support.temirnalNotices[levelToSaySorry] + '</span>'  + "\n");
+						(levelToSaySorry < Support.temirnalNotices.length - 1) ? levelToSaySorry++ : levelToSaySorry;
 					}
 			
-					// Add to command history and clean up.
+					//Add to command history and clean up.
 					commandHistory.push(command);
 					historyIndex = commandHistory.length;
 					command = "";
+					return false;
 			}
 			
 			function displayPrompt() {
-					terminal.append("<span class=\"prompt\">" + prompt + "</span> ");
+					//terminal.append("<span class=\"prompt\">" + prompt + "</span> ");
 					terminal.append("<span class=\"path\">" + path + "</span> ");
 			}
 			
@@ -140,6 +141,10 @@ class ConfirmPage extends React.Component{
 			function appendCommand(str) {
 					terminal.append(str);
 					command += str;
+			}
+
+			function scrollBottom(){
+				terminal.scrollTop(terminal[0].scrollHeight);
 			}
 			
 			/*
@@ -184,39 +189,44 @@ class ConfirmPage extends React.Component{
 								clearCommand();
 								appendCommand(cmd);
 						}
-				}
-		});
-		
-		$(document).keypress(function(e) {
-				// Make sure we get the right event
-				e = e || window.event;
-				var keyCode = typeof e.which === "number" ? e.which : e.keyCode;
-		
-				// Which key was pressed?
-				switch (keyCode) {
-						// ENTER
-						case 13:
-								{
-										terminal.append("\n");
-										processCommand();
-										displayPrompt();
-										break;
-								}
-						default:
-								{
-										appendCommand(String.fromCharCode(keyCode));
-								}
-				}
-		});
-		
-		// Set the window title
-		title.text("w3team: ~ (zsh)");
-		
-		// Get the date for our fake last-login
-		var date = new Date().toString(); date = date.substr(0, date.indexOf("GMT") - 1);
-		
-		// Display last-login and promt
-		terminal.append("Last login: " + date + " on ttys000\n"); displayPrompt();
+					}
+			});
+			
+			$(document).keypress(function(e) {
+					// Make sure we get the right event
+					e = e || window.event;
+					var keyCode = typeof e.which === "number" ? e.which : e.keyCode;
+			
+					// Which key was pressed?
+					switch (keyCode) {
+							// ENTER
+							case 13:
+									{
+											terminal.append("\n");
+											if(!processCommand()){
+												displayPrompt();
+												scrollBottom();
+											}
+											break;
+									}
+							default:
+									{
+											appendCommand(String.fromCharCode(keyCode));
+									}
+					}
+			});
+			
+			// Set the window title
+			title.text("w3team: w3steam$ (~bath)");
+			
+			// Get the date for our fake last-login
+			var date = new Date().toString(); date = date.substr(0, date.indexOf("GMT") - 1);
+			
+			// Display last-login and promt
+			terminal.append("Last access: " + date + " on w3steam\n"); 
+			
+
+			terminal.append('Nhập pass đi nè (づ｡◕‿‿◕｡)づ \n'); displayPrompt();
 		});
     }
 

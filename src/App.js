@@ -5,6 +5,7 @@ import NavBar from './NavBar';
 import Main from './Main';
 import Error from './Error';
 import About from './About';
+import Contact from './Contact';
 import Test from './Test';
 import ConfirmPage from './ConfirmPage';
 
@@ -28,6 +29,7 @@ class App extends Component {
             <Switch>
               <Route exact  path="/confirm/:id" render={(props)=><ConfirmPage {...props} root={this} url="success"/>}/>
               <Route exact path="/about" render={(props)=><About {...props} root={this}/>} />
+              <Route exact path="/contact" render={(props)=><Contact {...props} root={this}/>} />
               <Route exact path="/test" render={(props)=><Test {...props} root={this}/>} />
               
               <Route exact  path="/" render={(props)=><Main {...props} root={this}/>} />

@@ -3,14 +3,14 @@ import marked from "marked";
 import {Support} from './Support.js';
 import './css/markdown.css';
 
-class About extends React.Component{
+class Contact extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-          idPage: 1
+          idPage: 4
         };
         this.checkPermission = this.checkPermission.bind(this);
-        this.checkPermission();
+        //this.checkPermission();
        
     }
 
@@ -25,7 +25,7 @@ class About extends React.Component{
     }
 
     componentDidMount(){
-      console.log('load About');
+      console.log('load Contact');
       const readmePath = require("./markdowns/about.md");
       
       fetch(readmePath)
@@ -40,19 +40,21 @@ class About extends React.Component{
     }
 
     render() {
-      if(this.state.markdown){
-          return (
-        
-            <section className="markdown-section">
-            <article dangerouslySetInnerHTML={{__html: this.state.markdown}}></article>
-            </section>
-          )
-      }
-      else{
-        return (<div></div>);
-      }
     
-    }
+        if(this.state.markdown){
+            return (
+          
+              <section className="markdown-section">
+              <article dangerouslySetInnerHTML={{__html: this.state.markdown}}></article>
+              </section>
+            )
+        }
+        else{
+          return (<div></div>);
+        }
+      
+      }
 }
+    
 
-export default About;
+export default Contact;
