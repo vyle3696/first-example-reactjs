@@ -26,7 +26,7 @@ class Contact extends React.Component{
 
     componentDidMount(){
       console.log('load Contact');
-      const readmePath = require("./markdowns/about.md");
+      const readmePath = require("./markdowns/w3team-rule.md");
       
       fetch(readmePath)
         .then(response => {
