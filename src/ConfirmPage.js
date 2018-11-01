@@ -17,12 +17,11 @@ class ConfirmPage extends React.Component{
 
 	componentWillMount(){
 		$("body").css("overflow","hidden");
-		$("html").css("overflow","hidden");
+		
 	}
 
 	componentWillUnmount() {
 		$("body").css("overflow","auto");
-		$("html").css("overflow","auto");
 	}
 
 	componentDidMount(){
@@ -223,7 +222,7 @@ class ConfirmPage extends React.Component{
 			var date = new Date().toString(); date = date.substr(0, date.indexOf("GMT") - 1);
 			
 			// Display last-login and promt
-			terminal.append("Last access: " + date + " on w3steam\n"); 
+			terminal.append("<span>Last access: " + date + " on w3steam</span>\n"); 
 			
 
 			terminal.append('Nhập pass đi nè (づ｡◕‿‿◕｡)づ \n'); displayPrompt();

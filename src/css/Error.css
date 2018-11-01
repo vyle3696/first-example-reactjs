@@ -1,8 +1,4 @@
-Styles of the 404 page of my website.
 
-body {
-    
-}
 
 .code-container{
     position: fixed;
@@ -19,7 +15,7 @@ body {
     z-index: 10;
 }
 
-a {
+.code-container a {
 	color: #fff;
 }
 

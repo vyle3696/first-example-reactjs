@@ -23,7 +23,7 @@ class App extends Component {
   }
   render() {
     return(
-        <div>
+      <React.Fragment>
           <NavBar menuList={window.MenuList} root={this}/>
           <div className="main-content">
             <Switch>
@@ -39,7 +39,7 @@ class App extends Component {
         </div>
         
         
-        </div>
+      </React.Fragment>
     );
     
   }
