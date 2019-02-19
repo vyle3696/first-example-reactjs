@@ -23,7 +23,7 @@ class Home extends React.Component{
     }
 
     componentDidMount(){
-        Support.parseObjectFormFile('projects-list.json')
+        Support.parseObjectFormFile('config/projects-list.json')
         .then( response => {
             this.setState({
                 list: response.data

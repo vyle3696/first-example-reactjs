@@ -41,7 +41,7 @@ class NavBar extends React.Component{
             e.preventDefault();
         });
 
-        Support.parseObjectFormFile('menu.json')
+        Support.parseObjectFormFile('config/menu.json')
         .then( response => {
             this.setState({
                 menuList: response.data

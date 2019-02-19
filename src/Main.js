@@ -25,7 +25,7 @@ class Main extends React.Component{
     
     componentDidMount(){
         console.log('load Main');
-        Support.parseObjectFormFile('menu.json')
+        Support.parseObjectFormFile('config/menu.json')
         .then( response => {
             this.setState({
                 menuList: response.data

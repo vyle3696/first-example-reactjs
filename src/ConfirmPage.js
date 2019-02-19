@@ -230,7 +230,7 @@ class ConfirmPage extends React.Component{
     }
 
     confirmSuccess(){
-		Support.parseObjectFormFile('menu.json')
+		Support.parseObjectFormFile('config/menu.json')
         .then( response => {
 			let MenuList = response.data;
             let path = MenuList[this.props.match.params.id].link;
