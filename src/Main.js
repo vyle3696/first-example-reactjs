@@ -4,6 +4,8 @@ import Home from './Home';
 import Footer from './Footer';
 import Loading from './Loading';
 
+import {Support} from './Support.js';
+
 import $ from "jquery";
 
 import {
@@ -15,8 +17,7 @@ class Main extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            menuList: window.MenuList,
-            
+            menuList: [],           
 
         }
         
@@ -24,6 +25,12 @@ class Main extends React.Component{
     
     componentDidMount(){
         console.log('load Main');
+        Support.parseObjectFormFile('menu.json')
+        .then( response => {
+            this.setState({
+                menuList: response.data
+            });
+        });
     }
     render(){
         return(

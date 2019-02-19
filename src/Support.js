@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 export var Support = {
     
     isValidURL(str){
@@ -17,6 +19,12 @@ export var Support = {
 
     generateKey(){
         return Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+    },
+
+    parseObjectFormFile(path){   
+        var rootUrl =  window.location.protocol  +'//'+  window.location.hostname +(window.location.port ? ':'+ window.location.port: '');    
+        return axios(rootUrl + '/' + path) // JSON File Path
+        //return path;
     },
 
     temirnalNotices : [

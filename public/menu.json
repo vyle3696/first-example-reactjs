@@ -1,0 +1,77 @@
+[
+  {
+    "text": "Home",
+    "link": "/",
+    "isPrivate": false
+  },
+  {
+    "text": "About Us",
+    "link": "/about",
+    "isPrivate": true
+  },
+  {
+    "text": "Works & Our Project",
+    "link": "/works",
+    "isPrivate": false
+  },
+  {
+    "text": "New & Exiting Trends",
+    "link": "/http://demo.agnidesigns.com/fortune/demo3/portfolio/pop/",
+    "isPrivate": false
+  },
+  {
+    "text": "Contact Us",
+    "link": "/contact",
+    "isPrivate": false
+  },
+  {
+    "text": "Home",
+    "link": "http://demo.agnidesigns.com/fortune/demo3/portfolio/pop/",
+    "isPrivate": false
+  },
+  {
+    "text": "About Us",
+    "link": "/about",
+    "isPrivate": true
+  },
+  {
+    "text": "Works & Our Project",
+    "link": "/works",
+    "isPrivate": false
+  },
+  {
+    "text": "New & Exiting Trends",
+    "link": "/trends",
+    "isPrivate": false
+  },
+  {
+    "text": "Contact Us",
+    "link": "/contact",
+    "isPrivate": false
+  },
+  {
+    "text": "Home",
+    "link": "http://demo.agnidesigns.com/fortune/demo3/portfolio/pop/",
+    "isPrivate": false
+  },
+  {
+    "text": "About Us",
+    "link": "/about",
+    "isPrivate": true
+  },
+  {
+    "text": "Works & Our Project",
+    "link": "/works",
+    "isPrivate": false
+  },
+  {
+    "text": "New & Exiting Trends",
+    "link": "/trends",
+    "isPrivate": false
+  },
+  {
+    "text": "Contact Us",
+    "link": "/contact",
+    "isPrivate": false
+  }
+]

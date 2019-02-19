@@ -86,3 +86,5 @@ function controllDetailPage(){
     
     console.log('load controller');
 }
+
+var permission = "";

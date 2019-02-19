@@ -230,17 +230,22 @@ class ConfirmPage extends React.Component{
     }
 
     confirmSuccess(){
-		let path = window.MenuList[this.props.match.params.id].link;
-		let permissionKey = Support.generateKey();
-		window.permission = permissionKey;
-		sessionStorage.setItem("permission", permissionKey);
-		if(Support.isValidURL(path)){
-			window.location.assign(path);
-		}else{
+		Support.parseObjectFormFile('menu.json')
+        .then( response => {
+			let MenuList = response.data;
+            let path = MenuList[this.props.match.params.id].link;
+			let permissionKey = Support.generateKey();
+			window.permission = permissionKey;
+			sessionStorage.setItem("permission", permissionKey);
+			if(Support.isValidURL(path)){
+				window.location.assign(path);
+			}else{
 
-			this.props.history.push(path + "?k=" + permissionKey);
-			//window.location.assign(window.location.origin + window.MenuList[this.props.match.params.id].link);
-		}
+				this.props.history.push(path + "?k=" + permissionKey);
+				
+			}
+        }); 
+		
 	}
 	
 	render(){

@@ -21,6 +21,9 @@ class NavBar extends React.Component{
 
     constructor(props){
         super(props);
+        this.state = {
+            menuList: []
+        }
         this.onVerticalMenuClick = this.onVerticalMenuClick.bind(this);
         this.onHorizontalMenuClick = this.onHorizontalMenuClick.bind(this);
         this.onMenuItemClick = this.onMenuItemClick.bind(this);
@@ -37,6 +40,14 @@ class NavBar extends React.Component{
         $("#navv").on("wheel", function ( e ) {
             e.preventDefault();
         });
+
+        Support.parseObjectFormFile('menu.json')
+        .then( response => {
+            this.setState({
+                menuList: response.data
+            });
+        });
+        
     }
 
     setDelayMenuItem(){
@@ -109,7 +120,7 @@ class NavBar extends React.Component{
                 <div className="nav-vertical">
                     <div className="nav-left">
                         <div id="navv" className="top list-menu scrollbar ps-container">
-                            {this.props.menuList.map((item,index)=>(
+                            {this.state.menuList.map((item,index)=>(
                                 <p className="menu-item" key={index} onClick={()=>{this.onMenuItemClick(item, index, true)}}>{item.text} </p>
                             ))}
                         </div>
@@ -156,7 +167,7 @@ class NavBar extends React.Component{
                                 <i className="material-icons element-bottom">remove</i>
                             </div>
                             <div id="navh" className="list-text list-menu scrollbar ps-container">
-                                {this.props.menuList.map((item,index)=>(
+                                {this.state.menuList.map((item,index)=>(
                                     <p className="menu-item" key={index} onClick={()=>{this.onMenuItemClick(item, index, false)}}>{item.text}</p>
                                 ))}
                             </div>

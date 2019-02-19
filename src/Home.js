@@ -3,7 +3,7 @@ import React from 'react';
 import ItemProject from './ItemProject';
 
 import Detail from './Detail';
-
+import {Support} from './Support.js';
 import './css/Home.css';
 import $ from 'jquery';
 
@@ -11,19 +11,27 @@ class Home extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            list: window.ProjectList,
-            preview: window.ProjectList[0],
+            list: [],
+            preview: [],
             detail: ""
 
         }
+        
         //console.log(this.state.list);
         this.onItemProjectClick = this.onItemProjectClick.bind(this);
         this.closeDetail = this.closeDetail.bind(this);
     }
 
     componentDidMount(){
-        window.loadMarsonry();
-        window.controllButtonMoveTop();
+        Support.parseObjectFormFile('projects-list.json')
+        .then( response => {
+            this.setState({
+                list: response.data
+            });
+            window.loadMarsonry();
+            window.controllButtonMoveTop();
+        });      
+
     }
 
     onItemProjectClick(content){

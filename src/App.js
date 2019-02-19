@@ -24,7 +24,7 @@ class App extends Component {
   render() {
     return(
       <React.Fragment>
-          <NavBar menuList={window.MenuList} root={this}/>
+          <NavBar root={this}/>
           <div className="main-content">
             <Switch>
               <Route exact  path="/confirm/:id" render={(props)=><ConfirmPage {...props} root={this} url="success"/>}/>
