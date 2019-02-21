@@ -142,7 +142,8 @@
 }
 
 .description-inner {
-    margin: auto;
+    margin-top: auto;
+    margin-bottom: auto;
 }
 
 .description .details a {

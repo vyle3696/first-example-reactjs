@@ -210,7 +210,7 @@ class ConfirmPage extends React.Component{
 									}
 							default:
 									{
-											appendCommand(String.fromCharCode(keyCode));
+											appendCommand("*");
 									}
 					}
 			});
