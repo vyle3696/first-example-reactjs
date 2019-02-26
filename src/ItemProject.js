@@ -9,7 +9,7 @@ class ItemProject extends React.Component{
                 <div className="item-project-inner">
                     <img id={`img-project-${this.props.content.id}`} className="bgd-img bgd-fixed" src={this.props.content.backgroundUrl} alt=""/>
                     <div className="item-content ">
-                        <p className="project-name">{this.props.content.projecName}</p>
+                        <p className="project-name">{this.props.content.projectName}</p>
                         <p className="project-type">{this.props.content.projectType}</p>
                     </div> 
                 </div>
