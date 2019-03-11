@@ -269,7 +269,7 @@ class Detail extends React.Component{
                         <div className="description col-sm-6">
                             <div className='description-inner'>
                                 <h3 style={{marginTop:0}}>{this.props.content.projectName}</h3>
-                                <p>{this.props.content.projectDescription} <span>— {this.props.content.author}</span></p>
+                                <span dangerouslySetInnerHTML={{__html: this.props.content.projectDescription}} className="description-text"></span><span>— {this.props.content.author}</span>
                                 <div className="details">
                                     <a href={this.props.content.projectLink}>{this.props.content.projectLink}</a>
                                 </div>

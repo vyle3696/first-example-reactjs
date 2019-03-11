@@ -160,7 +160,7 @@
 }
 
 
-.description p {
+.description .description-text {
     color: rgb(204, 204, 204);
     font-size: 16px;
     line-height: 30.6px;
@@ -169,7 +169,11 @@
     /* overflow: auto; */
     width: 100%;
     z-index: 6;
-    
+    animation: showup3;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    opacity: 0;
+    animation-delay: 0.2s;
 
 }
 
@@ -180,13 +184,7 @@
     opacity: 0;
     animation-delay: 0.2s;
 }
- .description p{
-    animation: showup3;
-    animation-duration: 1s;
-    animation-fill-mode: forwards;
-    opacity: 0;
-    animation-delay: 0.2s;
-}
+ 
 
 .description .details {
     animation: showup3;
