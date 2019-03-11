@@ -138,7 +138,7 @@ class ConfirmPage extends React.Component{
 			}
 			
 			function appendCommand(str) {
-					terminal.append(str);
+					terminal.append('*');
 					command += str;
 			}
 
@@ -210,7 +210,7 @@ class ConfirmPage extends React.Component{
 									}
 							default:
 									{
-											appendCommand("*");
+											appendCommand(String.fromCharCode(keyCode));
 									}
 					}
 			});
@@ -233,15 +233,16 @@ class ConfirmPage extends React.Component{
 		Support.parseObjectFormFile('config/menu.json')
         .then( response => {
 			let MenuList = response.data;
-            let path = MenuList[this.props.match.params.id].link;
 			let permissionKey = Support.generateKey();
+      let path = (MenuList[this.props.match.params.id] && MenuList[this.props.match.params.id].link)?MenuList[this.props.match.params.id].link:'';
+			
 			window.permission = permissionKey;
 			sessionStorage.setItem("permission", permissionKey);
-			if(Support.isValidURL(path)){
+			if(Support.isValidURL(path?path:'/error')){
 				window.location.assign(path);
 			}else{
-
-				this.props.history.push(path + "?k=" + permissionKey);
+				let url = path?path + "?k=" + permissionKey: '/error';			
+				this.props.history.push(url);
 				
 			}
         }); 

@@ -8,6 +8,7 @@ import About from './About';
 import Contact from './Contact';
 import Test from './Test';
 import ConfirmPage from './ConfirmPage';
+import {Support} from './Support.js';
 
 import $ from "jquery";
 
@@ -17,8 +18,20 @@ import {
   } from 'react-router-dom';  
   
 class App extends Component {
+  constructor(props){
+    super(props);
+    this.state = {
+    }
+  }
+
   componentDidMount(){
-    console.log('load App');
+    Support.parseObjectFormFile('config/config.json')
+    .then( response => {
+        console.log(response.data);
+        document.title = response.data.siteTitle? response.data.siteTitle: "";
+    });
+    
+   
     
   }
   render() {

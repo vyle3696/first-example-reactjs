@@ -22,7 +22,8 @@ class NavBar extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            menuList: []
+            menuList: [],
+            config: []
         }
         this.onVerticalMenuClick = this.onVerticalMenuClick.bind(this);
         this.onHorizontalMenuClick = this.onHorizontalMenuClick.bind(this);
@@ -45,6 +46,13 @@ class NavBar extends React.Component{
         .then( response => {
             this.setState({
                 menuList: response.data
+            });
+        });
+
+        Support.parseObjectFormFile('config/config.json')
+        .then( response => {
+            this.setState({
+                config: response.data
             });
         });
         
@@ -125,7 +133,7 @@ class NavBar extends React.Component{
                             ))}
                         </div>
                         <div className="bottom">
-                            <p className="copyright">Copyright © 2017 All Rights Reserved.</p>
+                            <p className="copyright">{this.state.config? this.state.config.copyright:""}</p>
                         </div>
                     </div>
                     <div className="nav-right">
@@ -137,9 +145,9 @@ class NavBar extends React.Component{
                         </div>
                         <div className="bottom">
                             <div className="social-icon">
-                            <li><a target="_self" href="http://facebook.com/profile"> <i className="fa fa-facebook"></i></a></li>
-                                <li><a target="_self" href="http://twitter.com/"> <i className="fa fa-twitter"></i></a></li>
-                                <li><a target="_self" href="http://dribbble.com/"> <i className="fa fa-dribbble"></i></a></li>
+                            <li><a target="_blank" href={this.state.config? this.state.config.facebook:""}> <i className="fa fa-facebook"></i></a></li>
+                                {/* <li><a target="_self" href="http://twitter.com/"> <i className="fa fa-twitter"></i></a></li>
+                                <li><a target="_self" href="http://dribbble.com/"> <i className="fa fa-dribbble"></i></a></li> */}
                             </div>
                         </div>
                     </div>
@@ -154,9 +162,9 @@ class NavBar extends React.Component{
                     <div className="social-icon">
                             <a><span><i className="material-icons" >share</i></span></a>
                             <ul className="list-icon">
-                                <li><a target="_self" href="http://facebook.com/profile"> <i className="fa fa-facebook"></i></a></li>
-                                <li><a target="_self" href="http://twitter.com/"> <i className="fa fa-twitter"></i></a></li>
-                                <li><a target="_self" href="http://dribbble.com/"> <i className="fa fa-dribbble"></i></a></li>
+                                <li><a target="_blank" href={this.state.config? this.state.config.facebook:""}> <i className="fa fa-facebook"></i></a></li>
+                                {/* <li><a target="_self" href="http://twitter.com/"> <i className="fa fa-twitter"></i></a></li>
+                                <li><a target="_self" href="http://dribbble.com/"> <i className="fa fa-dribbble"></i></a></li> */}
                             </ul>
                             
                         </div>
