@@ -138,7 +138,7 @@ class NavBar extends React.Component{
                     </div>
                     <div className="nav-right">
                         <div className="top">
-                            <img src={require("./images/fortune-logo3_white.png")} alt="home-logo"/>
+                            <img src={require("./images/w3logo-small.png")} alt="home-logo"/>
                         </div>
                         <div className="center">
                             <p className="menu-close" onClick={this.onVerticalMenuClick}>MENU</p>
@@ -155,7 +155,7 @@ class NavBar extends React.Component{
 
                 <div className="nav-horizontal">
                     <div className="logo-header">
-                    <img src={require("./images/fortune-logo3_white.png")} alt="home-logo"/>
+                    <img src={require("./images/w3logo-small.png")} alt="home-logo"/>
                     </div>
 
                     <div className="menu-header">

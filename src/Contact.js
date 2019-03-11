@@ -26,17 +26,17 @@ class Contact extends React.Component{
 
     componentDidMount(){
       console.log('load Contact');
-      const readmePath = require("./markdowns/w3team-rule.md");
+      // const readmePath = require("./markdowns/w3team-rule.md");
       
-      fetch(readmePath)
-        .then(response => {
-          return response.text()
-        })
-        .then(text => {
-          this.setState({
-            markdown: marked(text)
-          })
-        })
+      // fetch(readmePath)
+      //   .then(response => {
+      //     return response.text()
+      //   })
+      //   .then(text => {
+      //     this.setState({
+      //       markdown: marked(text)
+      //     })
+      //   })
     }
 
     render() {
@@ -45,7 +45,7 @@ class Contact extends React.Component{
             return (
           
               <section className="markdown-section">
-              <article dangerouslySetInnerHTML={{__html: this.state.markdown}}></article>
+              {/* <article dangerouslySetInnerHTML={{__html: this.state.markdown}}></article> */}
               </section>
             )
         }

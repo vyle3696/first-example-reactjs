@@ -5,6 +5,8 @@ import NavBar from './NavBar';
 import Main from './Main';
 import Error from './Error';
 import About from './About';
+import Pages from './Pages';
+
 import Contact from './Contact';
 import Test from './Test';
 import ConfirmPage from './ConfirmPage';
@@ -14,7 +16,8 @@ import $ from "jquery";
 
 import {
   Route,
-  Switch
+  Switch,
+  Redirect
   } from 'react-router-dom';  
   
 class App extends Component {
@@ -42,11 +45,15 @@ class App extends Component {
             <Switch>
               <Route exact  path="/confirm/:id" render={(props)=><ConfirmPage {...props} root={this} url="success"/>}/>
               <Route exact path="/about" render={(props)=><About {...props} root={this}/>} />
+              <Route exact path="/pages/:page" render={(props)=><Pages {...props} root={this}/>} />
+              
               <Route exact path="/contact" render={(props)=><Contact {...props} root={this}/>} />
+              <Route exact path="/error" component={Error } />
               <Route exact path="/test" render={(props)=><Test {...props} root={this}/>} />
               
               <Route exact  path="/" render={(props)=><Main {...props} root={this}/>} />
               
+              {/* <Route path="*" status={404} render={() => (<Redirect to="/error" />)} /> */}
               <Route component={Error} />
            </Switch>
         </div>

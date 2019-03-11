@@ -26,24 +26,24 @@ class About extends React.Component{
 
     componentDidMount(){
       console.log('load About');
-      const readmePath = require("./markdowns/about.md");
+      // const readmePath = require("./markdowns/about.md");
       
-      fetch(readmePath)
-        .then(response => {
-          return response.text()
-        })
-        .then(text => {
-          this.setState({
-            markdown: marked(text)
-          })
-        })
+      // fetch(readmePath)
+      //   .then(response => {
+      //     return response.text()
+      //   })
+      //   .then(text => {
+      //     this.setState({
+      //       markdown: marked(text)
+      //     })
+      //   })
     }
 
     render() {
       if(this.state.markdown){
           return (
             <section className="markdown-section">
-            <article dangerouslySetInnerHTML={{__html: this.state.markdown}}></article>
+            {/* <article dangerouslySetInnerHTML={{__html: this.state.markdown}}></article> */}
             </section>
           )
       }
