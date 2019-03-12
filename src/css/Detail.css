@@ -16,9 +16,7 @@
     color: #813d34;
 }
 
-.preview button:hover {
-    color: #c85e51;
-}
+
 
 .preview button:focus {outline:0;}
 
@@ -101,6 +99,18 @@
 
 .img-view #btn-next {
     right: 0;
+}
+
+.img-view:hover > button {
+    color: #c85e51;
+}
+
+.img-view button:hover {    
+    color: coral;
+}
+
+.preview button:hover {
+    color: coral;
 }
 
 .preview .btn-close{
@@ -192,6 +202,14 @@
     animation-fill-mode: forwards;
     opacity: 0;
     animation-delay: 0.2s;
+}
+
+.description span {
+    animation: showup3;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    opacity: 0;
+    animation-delay: 0.3s;
 }
 
 @keyframes showup3 {

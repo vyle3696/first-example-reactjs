@@ -46,5 +46,25 @@ export var Support = {
         "Hello from the other side",
         "щ（ﾟДﾟщ）",
         "≧◡≦ nhập tiếp đến khi thấy điều bất ngờ nhé",
-    ]
+    ],
+    getParamFromURL(name){
+        if(name=(new RegExp('[?&]'+encodeURIComponent(name)+'=([^&]*)')).exec(window.location.search))
+            return decodeURIComponent(name[1]);
+    },
+
+    isRequirePermissionLink(path, menu){       
+        if(!path || !menu) {return false;}
+        for(let i = 0; i < menu.length ; i++){
+            if(menu[i].link == path){                
+                if(menu[i].isPrivate) {                   
+                    return true;
+                }else{
+                    return false;
+                }             
+            }
+        }
+
+        return false;
+    }
+
 }

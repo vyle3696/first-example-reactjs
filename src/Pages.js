@@ -9,52 +9,70 @@ class Pages extends React.Component{
         this.state = {
           page: ''
         };
-        this.checkPermission = this.checkPermission.bind(this);
-        this.checkPermission();
+        this.checkPermission = this.checkPermission.bind(this);       
+        this.getMarkdown = this.getMarkdown.bind(this);      
        
     }
 
     checkPermission(){
-      console.log(sessionStorage.permission);
-       let path = this.props.location.search;
+      Support.parseObjectFormFile('config/menu.json')
+      .then( response => {
+            let MenuList = response.data;        
+            let pathname = this.props.location.pathname;
 
-       // || !sessionStorage.permission || !(path.substr(3) == sessionStorage.permission) not use
-        if(!(window.permission == path.substr(3))){
-          this.props.history.push("/confirm/"+ this.state.idPage);
-        }
+            if(Support.isRequirePermissionLink(pathname, MenuList)){
+                let key = Support.getParamFromURL('k');
+                
+                if(!key || !(window.permission == key)){
+                  let url ="/confirm";	
+                  this.props.history.push({
+                      pathname: "/confirm",
+                      state: {
+                          page: pathname
+                      }
+                  });
+                  
+               
+                }else{
+                  this.getMarkdown();
+                }
+            }else{
+              this.getMarkdown();
+            }
+        
+      });      
+      
+    }
+
+    getMarkdown(){
+      this.setState({
+        page:this.props.match.params.page
+        }, ()=>{
+          var rootUrl =  window.location.protocol  +'//'+  window.location.hostname +(window.location.port ? ':'+ window.location.port: '');               
+            try{
+              const readmePath = rootUrl + "/markdowns/"+ this.state.page;         
+              fetch(readmePath)
+                .then(response => {               
+                  return response.text();
+                })
+                .then(text => {
+                  if(text.indexOf("<!DOCTYPE html>") == 0 || text.indexOf('<html') == 0){
+                    this.props.history.push('/error');
+                  }
+                  this.setState({
+                    markdown: marked(text)
+                  })
+                })
+            }   
+            catch(error){
+              this.props.history.push('/error');
+            }   
+            
+        });
     }
 
     componentDidMount(){
-      console.log(this.props.match.params.page);
-      this.setState({
-          page:this.props.match.params.page
-      }, ()=>{
-        var rootUrl =  window.location.protocol  +'//'+  window.location.hostname +(window.location.port ? ':'+ window.location.port: '');    
-
-          // let path = "./markdowns/"+ this.state.page;            
-          try{
-            const readmePath = rootUrl + "/markdowns/"+ this.state.page;         
-            fetch(readmePath)
-              .then(response => {               
-                return response.text();
-              })
-              .then(text => {
-                if(text.indexOf("<!DOCTYPE html>") == 0 || text.indexOf('<html') == 0){
-                  this.props.history.push('/error');
-                }
-                this.setState({
-                  markdown: marked(text)
-                })
-              })
-          }   
-          catch(error){
-            this.props.history.push('/error');
-          }   
-          
-      });
-
-      
-
+      this.checkPermission();
     }
 
     render() {

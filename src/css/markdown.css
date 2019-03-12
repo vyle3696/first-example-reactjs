@@ -3,6 +3,7 @@
     font-size: 14px;
     background-color: white;
     color: #12393a;
+    min-height: 100vh;
 }
 
 .markdown-section a{

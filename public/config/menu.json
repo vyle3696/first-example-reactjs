@@ -7,9 +7,15 @@
   },
   {
     "id": "2",
-    "text": "About Us",
-    "link": "/about",
-    "isPrivate": true
+    "text": "404",
+    "link": "/pages/404.md",
+    "isPrivate": false
+  },
+  {
+    "id": "2",
+    "text": "about",
+    "link": "/pages/about.md",
+    "isPrivate": false
   },
   {
     "id": "3",
@@ -20,14 +26,14 @@
   {
     "id": "4",
     "text": "New & Exiting Trends",
-    "link": "/http://demo.agnidesigns.com/fortune/demo3/portfolio/pop/",
-    "isPrivate": false
+    "link": "http://demo.agnidesigns.com/fortune/demo3/portfolio/pop/",
+    "isPrivate": true
   },
   {
     "id": "5",
     "text": "Contact Us",
-    "link": "/contact",
-    "isPrivate": false
+    "link": "/",
+    "isPrivate": true
   },
   {
     "id": "6",
@@ -38,7 +44,7 @@
   {
     "id": "7",
     "text": "About Us",
-    "link": "/about",
+    "link": "/pages/about.md",
     "isPrivate": true
   }
 ]

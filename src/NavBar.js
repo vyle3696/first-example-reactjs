@@ -6,7 +6,7 @@ import PerfectScrollbar from 'perfect-scrollbar';
 import './css/NavBar.css';
 import {Support} from './Support.js';
 import PropTypes from "prop-types";
-import { withRouter } from 'react-router-dom'
+import { withRouter } from 'react-router-dom';
 
 
 var isNavVerExpand = false;
@@ -103,14 +103,24 @@ class NavBar extends React.Component{
 
 
     onMenuItemClick(item, id, isVertical){
+    
         if(item.isPrivate){
-           this.props.history.push("/confirm/"+ id);
+            let pathname = item.link;
+            this.props.history.push({
+                pathname: "/confirm",
+                state: {
+                    page: pathname
+                }
+            });
         }else{
+            console.log(item.link, Support.isValidURL(item.link));
             if(Support.isValidURL(item.link)){
                 window.location.assign(item.link);
             }else{
-                this.props.history.push(item.link);
+                console.log( this.props, ' this.props.history.push(item.link);');
+                //this.props.history.push(item.link);
                 //window.location.assign(window.location.origin + item.link);
+                this.props.history.push(item.link);
             }
         }
 
@@ -180,10 +190,7 @@ class NavBar extends React.Component{
                                 ))}
                             </div>
 
-                        </div>
-                        
-                        
-                       
+                        </div>  
                     </div>
                     
                 </div>

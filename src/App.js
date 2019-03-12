@@ -43,14 +43,11 @@ class App extends Component {
           <NavBar root={this}/>
           <div className="main-content">
             <Switch>
-              <Route exact  path="/confirm/:id" render={(props)=><ConfirmPage {...props} root={this} url="success"/>}/>
-              <Route exact path="/about" render={(props)=><About {...props} root={this}/>} />
+              <Route exact  path="/confirm" render={(props)=><ConfirmPage {...props} root={this} url="success"/>}/>
+              {/* <Route exact path="/about" render={(props)=><About {...props} root={this}/>} /> */}
               <Route exact path="/pages/:page" render={(props)=><Pages {...props} root={this}/>} />
-              
-              <Route exact path="/contact" render={(props)=><Contact {...props} root={this}/>} />
+              {/* <Route exact path="/contact" render={(props)=><Contact {...props} root={this}/>} /> */}
               <Route exact path="/error" component={Error } />
-              <Route exact path="/test" render={(props)=><Test {...props} root={this}/>} />
-              
               <Route exact  path="/" render={(props)=><Main {...props} root={this}/>} />
               
               {/* <Route path="*" status={404} render={() => (<Redirect to="/error" />)} /> */}

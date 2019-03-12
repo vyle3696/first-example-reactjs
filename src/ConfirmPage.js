@@ -10,14 +10,12 @@ class ConfirmPage extends React.Component{
         super(props);
 		this.state = {
             notice: "",
-		}
-1	
+		}	
 		this.confirmSuccess = this.confirmSuccess.bind(this);
 	}
 
 	componentWillMount(){
 		$("body").css("overflow","hidden");
-		
 	}
 
 	componentWillUnmount() {
@@ -62,7 +60,15 @@ class ConfirmPage extends React.Component{
 					}
 			}
 			// END COMMANDS
-	
+
+			var pass = "";
+			
+			Support.parseObjectFormFile('config/config.json')
+			.then( response => {
+				pass = (response.data && response.data.password) ? response.data.password: "";
+				console.log('pass: ' , response, pass)
+			});
+
 			var title = $(".title");
 			var terminal = $(".terminal");
 			var prompt = "➜";
@@ -71,8 +77,7 @@ class ConfirmPage extends React.Component{
 			var commandHistory = [];
 			var historyIndex = 0;
 	
-			var command = "";
-			var pass = '123456';
+			var command = "";		
 	
 			function processCommand() {
 					var isValid = false;
@@ -230,22 +235,20 @@ class ConfirmPage extends React.Component{
     }
 
     confirmSuccess(){
-		Support.parseObjectFormFile('config/menu.json')
-        .then( response => {
-			let MenuList = response.data;
+		
 			let permissionKey = Support.generateKey();
-      let path = (MenuList[this.props.match.params.id] && MenuList[this.props.match.params.id].link)?MenuList[this.props.match.params.id].link:'';
-			
+			// let path = (MenuList[this.props.match.params.id] && MenuList[this.props.match.params.id].link)?MenuList[this.props.match.params.id].link:'';
+			let path = ((this.props.location.state && this.props.location.state.page)? this.props.location.state.page : "");
 			window.permission = permissionKey;
 			sessionStorage.setItem("permission", permissionKey);
-			if(Support.isValidURL(path?path:'/error')){
+
+			if(Support.isValidURL(path)){
 				window.location.assign(path);
 			}else{
 				let url = path?path + "?k=" + permissionKey: '/error';			
 				this.props.history.push(url);
 				
 			}
-        }); 
 		
 	}
 	
