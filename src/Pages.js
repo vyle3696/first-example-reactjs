@@ -7,7 +7,10 @@ class Pages extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-          page: ''
+          page: '',      
+          history: this.props.history,
+          location:this.props.location,
+          match: this.props.match
         };
         this.checkPermission = this.checkPermission.bind(this);       
         this.getMarkdown = this.getMarkdown.bind(this);      
@@ -18,35 +21,33 @@ class Pages extends React.Component{
       Support.parseObjectFormFile('config/menu.json')
       .then( response => {
             let MenuList = response.data;        
-            let pathname = this.props.location.pathname;
+            let pathname = this.state.location.pathname;
 
             if(Support.isRequirePermissionLink(pathname, MenuList)){
                 let key = Support.getParamFromURL('k');
                 
                 if(!key || !(window.permission == key)){
                   let url ="/confirm";	
-                  this.props.history.push({
+                  this.state.history.push({
                       pathname: "/confirm",
                       state: {
                           page: pathname
                       }
-                  });
-                  
+                  });                  
                
                 }else{
                   this.getMarkdown();
                 }
             }else{
               this.getMarkdown();
-            }
-        
+            }        
       });      
       
     }
 
     getMarkdown(){
       this.setState({
-        page:this.props.match.params.page
+        page:this.state.match.params.page
         }, ()=>{
           var rootUrl =  window.location.protocol  +'//'+  window.location.hostname +(window.location.port ? ':'+ window.location.port: '');               
             try{
@@ -57,7 +58,7 @@ class Pages extends React.Component{
                 })
                 .then(text => {
                   if(text.indexOf("<!DOCTYPE html>") == 0 || text.indexOf('<html') == 0){
-                    this.props.history.push('/error');
+                    this.state.history.push('/error');
                   }
                   this.setState({
                     markdown: marked(text)
@@ -65,9 +66,8 @@ class Pages extends React.Component{
                 })
             }   
             catch(error){
-              this.props.history.push('/error');
-            }   
-            
+              this.state.history.push('/error');
+            }               
         });
     }
 
@@ -75,11 +75,24 @@ class Pages extends React.Component{
       this.checkPermission();
     }
 
+    componentWillReceiveProps(nextProps) {
+      this.setState({ 
+        currentClick: nextProps.currentClick,
+        history: nextProps.history,
+        location: nextProps.location,
+        match: nextProps.match
+       }, ()=>{
+        this.checkPermission();
+       });  
+      
+    }
+
     render() {
       if(this.state.markdown){
           return (
             <section className="markdown-section">
             <article dangerouslySetInnerHTML={{__html: this.state.markdown}}></article>
+           
             </section>
           )
       }

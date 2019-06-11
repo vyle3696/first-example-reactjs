@@ -115,7 +115,7 @@ class NavBar extends React.Component{
         }else{
             console.log(item.link, Support.isValidURL(item.link));
             if(Support.isValidURL(item.link)){
-                window.location.assign(item.link);
+               window.open(item.link);
             }else{
                 console.log( this.props, ' this.props.history.push(item.link);');
                 //this.props.history.push(item.link);

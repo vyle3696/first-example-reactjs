@@ -31,9 +31,9 @@
   },
   {
     "id": "5",
-    "text": "Contact Us",
-    "link": "/",
-    "isPrivate": true
+    "text": "Demo",
+    "link": "http://demo.agnidesigns.com/fortune/demo3/portfolio/comma-logo-marks/",
+    "isPrivate": false
   },
   {
     "id": "6",
@@ -44,7 +44,7 @@
   {
     "id": "7",
     "text": "About Us",
-    "link": "/pages/about.md",
+    "link": "/pages/w3team-rule.md",
     "isPrivate": true
   }
 ]
